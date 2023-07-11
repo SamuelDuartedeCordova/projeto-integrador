@@ -1,0 +1,17 @@
+Scene Builder:
+*Criar as janelas com 3 guias
+
+Banco de dados:
+*Criar as tabelas:
+	Tabela veiculo
+	Tabela modelo
+	Tabela marca
+*Popular as banco
+
+Aplicação java:
+*Criar as classes
+	Controller
+	BD
+	Service
+	Modelos
+	Aplicação
