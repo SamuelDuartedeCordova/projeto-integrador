@@ -11,16 +11,16 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <AnchorPane layoutX="8.0" layoutY="3.0" prefHeight="112.0" prefWidth="1289.0">
+                  <AnchorPane layoutX="10.0" layoutY="6.0" prefHeight="102.0" prefWidth="1280.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="73.0" text="Marca" />
-                        <TextField fx:id="marca" layoutX="14.0" layoutY="46.0" prefHeight="41.0" prefWidth="237.0" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="72.0" text="Marca" />
+                        <TextField fx:id="marca" layoutX="9.0" layoutY="42.0" prefHeight="31.0" prefWidth="187.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="8.0" layoutY="127.0" prefHeight="117.0" prefWidth="1289.0">
+                  <AnchorPane layoutX="10.0" layoutY="127.0" prefHeight="102.0" prefWidth="1280.0">
                      <children>
-                        <Button fx:id="btnSalvarMarca" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" text="Salvar" />
-                        <Button fx:id="btnExcluirMarca" layoutX="149.0" layoutY="43.0" mnemonicParsing="false" text="Excluir" />
+                        <Button fx:id="btnSalvarMarca" layoutX="11.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarSalvar" text="Salvar" />
+                        <Button fx:id="btnExcluirMarca" layoutX="200.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarExcluir" text="Excluir" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
@@ -30,14 +30,50 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <AnchorPane layoutX="7.0" layoutY="6.0" prefHeight="140.0" prefWidth="1285.0">
+                  <AnchorPane layoutX="10.0" layoutY="6.0" prefHeight="102.0" prefWidth="1280.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="28.0" prefWidth="65.0" text="Nome" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="65.0" text="Nome" />
                         <TextField fx:id="nome" layoutX="14.0" layoutY="42.0" />
-                        <Label layoutX="214.0" layoutY="14.0" prefHeight="28.0" prefWidth="65.0" text="Cambio" />
-                        <TextField fx:id="cambio" layoutX="214.0" layoutY="42.0" />
-                        <Label layoutX="414.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Combustivel" />
-                        <TextField fx:id="combustivel" layoutX="414.0" layoutY="42.0" />
+                        <Label layoutX="254.0" layoutY="14.0" prefHeight="28.0" prefWidth="65.0" text="Cambio" />
+                        <TextField fx:id="cambio" layoutX="254.0" layoutY="42.0" />
+                        <Label layoutX="494.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Combustivel" />
+                        <TextField fx:id="combustivel" layoutX="494.0" layoutY="42.0" />
+                        <Label layoutX="734.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Potencia" />
+                        <TextField fx:id="potencia" layoutX="734.0" layoutY="42.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="108.0" prefHeight="102.0" prefWidth="1280.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Cilindrada" />
+                        <TextField fx:id="cilindrada" layoutX="14.0" layoutY="40.0" />
+                        <Label layoutX="255.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Carroceria" />
+                        <TextField fx:id="carroceria" layoutX="254.0" layoutY="40.0" />
+                        <Label layoutX="495.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Portas" />
+                        <TextField fx:id="portas" layoutX="494.0" layoutY="40.0" />
+                        <Label layoutX="735.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Cor" />
+                        <TextField fx:id="cor" layoutX="734.0" layoutY="40.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="197.0" prefHeight="102.0" prefWidth="1280.0">
+                     <children>
+                        <Button fx:id="btnSalvarModelo" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarSalvar" text="Salvar" />
+                        <Button fx:id="btnExcluirModelo" layoutX="200.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarExcluir" text="Excluir" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="11.0" layoutY="299.0" prefHeight="420.0" prefWidth="1280.0">
+                     <children>
+                        <TableView layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="1260.0">
+                          <columns>
+                            <TableColumn fx:id="colunaNome" prefWidth="200.0" text="Nome" />
+                            <TableColumn fx:id="colunaCambio" prefWidth="150.0" text="Cambio" />
+                              <TableColumn fx:id="coliunaCombustivel" prefWidth="150.0" text="Combustivel" />
+                              <TableColumn fx:id="colunaPotencia" prefWidth="150.0" text="Potencia" />
+                              <TableColumn fx:id="colunaCilindrada" prefWidth="150.0" text="Cilindrada" />
+                              <TableColumn fx:id="colunaCarroceria" prefWidth="150.0" text="Carroceria" />
+                              <TableColumn fx:id="colunaPortas" prefWidth="150.0" text="Portas" />
+                              <TableColumn fx:id="colunaCor" prefWidth="158.0" text="Cor" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
@@ -45,7 +81,40 @@
     </Tab>
       <Tab text="Veiculo">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane layoutX="10.0" layoutY="14.0" prefHeight="102.0" prefWidth="1280.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Renavam" />
+                        <TextField fx:id="renavam" layoutX="10.0" layoutY="36.0" />
+                        <Label layoutX="250.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Placa" />
+                        <TextField fx:id="placa" layoutX="250.0" layoutY="36.0" />
+                        <Label layoutX="490.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Ano" />
+                        <TextField fx:id="ano" layoutX="490.0" layoutY="36.0" />
+                        <Label fx:id="chassi" layoutX="735.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Chassi" />
+                        <TextField fx:id="ano1" layoutX="735.0" layoutY="36.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="14.0" layoutY="116.0" prefHeight="102.0" prefWidth="1280.0">
+                     <children>
+                        <Button fx:id="btnSalvarVeiculo" layoutX="10.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarSalvar" text="Salvar" />
+                        <Button fx:id="btnExcluirVeiculo" layoutX="200.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarExcluir" text="Excluir" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="227.0" prefHeight="489.0" prefWidth="1280.0">
+                     <children>
+                        <TableView layoutX="10.0" layoutY="14.0" prefHeight="467.0" prefWidth="1260.0">
+                          <columns>
+                            <TableColumn fx:id="colunaRenavam" prefWidth="315.0" text="Renavam" />
+                            <TableColumn fx:id="colunaPlaca" prefWidth="315.0" text="Placa" />
+                              <TableColumn fx:id="colunaAno" prefWidth="315.0" text="Ano" />
+                              <TableColumn fx:id="colunaChassi" prefWidth="313.0" text="Chassi" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
         </content>
       </Tab>
   </tabs>
