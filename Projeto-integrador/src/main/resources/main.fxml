@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="766.0" prefWidth="1301.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="766.0" prefWidth="1301.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab text="Marca">
       <content>
@@ -13,8 +13,8 @@
                <children>
                   <AnchorPane layoutX="10.0" layoutY="6.0" prefHeight="102.0" prefWidth="1280.0">
                      <children>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="72.0" text="Marca" />
-                        <TextField fx:id="marca" layoutX="9.0" layoutY="42.0" prefHeight="31.0" prefWidth="187.0" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="186.0" text="Nome do Fabricante" />
+                        <TextField fx:id="nomeDoFabricante" layoutX="9.0" layoutY="42.0" prefHeight="31.0" prefWidth="187.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="127.0" prefHeight="102.0" prefWidth="1280.0">
@@ -89,8 +89,8 @@
                         <TextField fx:id="renavam" layoutX="10.0" layoutY="36.0" />
                         <Label layoutX="250.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Placa" />
                         <TextField fx:id="placa" layoutX="250.0" layoutY="36.0" />
-                        <Label layoutX="490.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Ano" />
-                        <TextField fx:id="ano" layoutX="490.0" layoutY="36.0" />
+                        <Label layoutX="490.0" layoutY="7.0" prefHeight="28.0" prefWidth="167.0" text="Ano Fabricação" />
+                        <TextField fx:id="anoFabricacao" layoutX="490.0" layoutY="36.0" />
                         <Label fx:id="chassi" layoutX="735.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Chassi" />
                         <TextField fx:id="ano1" layoutX="735.0" layoutY="36.0" />
                      </children>
