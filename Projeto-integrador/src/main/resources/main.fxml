@@ -1,121 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="766.0" prefWidth="1301.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <tabs>
-    <Tab text="Marca">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <AnchorPane layoutX="10.0" layoutY="6.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="186.0" text="Nome do Fabricante" />
-                        <TextField fx:id="nomeDoFabricante" layoutX="9.0" layoutY="42.0" prefHeight="31.0" prefWidth="187.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="10.0" layoutY="127.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Button fx:id="btnSalvarMarca" layoutX="11.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarSalvar" text="Salvar" />
-                        <Button fx:id="btnExcluirMarca" layoutX="200.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarExcluir" text="Excluir" />
-                     </children>
-                  </AnchorPane>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab text="Modelo">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <AnchorPane layoutX="10.0" layoutY="6.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="65.0" text="Nome" />
-                        <TextField fx:id="nome" layoutX="14.0" layoutY="42.0" />
-                        <Label layoutX="254.0" layoutY="14.0" prefHeight="28.0" prefWidth="65.0" text="Cambio" />
-                        <TextField fx:id="cambio" layoutX="254.0" layoutY="42.0" />
-                        <Label layoutX="494.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Combustivel" />
-                        <TextField fx:id="combustivel" layoutX="494.0" layoutY="42.0" />
-                        <Label layoutX="734.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Potencia" />
-                        <TextField fx:id="potencia" layoutX="734.0" layoutY="42.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="10.0" layoutY="108.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Cilindrada" />
-                        <TextField fx:id="cilindrada" layoutX="14.0" layoutY="40.0" />
-                        <Label layoutX="255.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Carroceria" />
-                        <TextField fx:id="carroceria" layoutX="254.0" layoutY="40.0" />
-                        <Label layoutX="495.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Portas" />
-                        <TextField fx:id="portas" layoutX="494.0" layoutY="40.0" />
-                        <Label layoutX="735.0" layoutY="14.0" prefHeight="28.0" prefWidth="102.0" text="Cor" />
-                        <TextField fx:id="cor" layoutX="734.0" layoutY="40.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="10.0" layoutY="197.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Button fx:id="btnSalvarModelo" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarSalvar" text="Salvar" />
-                        <Button fx:id="btnExcluirModelo" layoutX="200.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarExcluir" text="Excluir" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="11.0" layoutY="299.0" prefHeight="420.0" prefWidth="1280.0">
-                     <children>
-                        <TableView layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="1260.0">
-                          <columns>
-                            <TableColumn fx:id="colunaNome" prefWidth="200.0" text="Nome" />
-                            <TableColumn fx:id="colunaCambio" prefWidth="150.0" text="Cambio" />
-                              <TableColumn fx:id="coliunaCombustivel" prefWidth="150.0" text="Combustivel" />
-                              <TableColumn fx:id="colunaPotencia" prefWidth="150.0" text="Potencia" />
-                              <TableColumn fx:id="colunaCilindrada" prefWidth="150.0" text="Cilindrada" />
-                              <TableColumn fx:id="colunaCarroceria" prefWidth="150.0" text="Carroceria" />
-                              <TableColumn fx:id="colunaPortas" prefWidth="150.0" text="Portas" />
-                              <TableColumn fx:id="colunaCor" prefWidth="158.0" text="Cor" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-      <Tab text="Veiculo">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <AnchorPane layoutX="10.0" layoutY="14.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Label layoutX="10.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Renavam" />
-                        <TextField fx:id="renavam" layoutX="10.0" layoutY="36.0" />
-                        <Label layoutX="250.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Placa" />
-                        <TextField fx:id="placa" layoutX="250.0" layoutY="36.0" />
-                        <Label layoutX="490.0" layoutY="7.0" prefHeight="28.0" prefWidth="167.0" text="Ano Fabricação" />
-                        <TextField fx:id="anoFabricacao" layoutX="490.0" layoutY="36.0" />
-                        <Label fx:id="chassi" layoutX="735.0" layoutY="7.0" prefHeight="28.0" prefWidth="100.0" text="Chassi" />
-                        <TextField fx:id="ano1" layoutX="735.0" layoutY="36.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="14.0" layoutY="116.0" prefHeight="102.0" prefWidth="1280.0">
-                     <children>
-                        <Button fx:id="btnSalvarVeiculo" layoutX="10.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarSalvar" text="Salvar" />
-                        <Button fx:id="btnExcluirVeiculo" layoutX="200.0" layoutY="34.0" mnemonicParsing="false" onAction="#executarExcluir" text="Excluir" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="10.0" layoutY="227.0" prefHeight="489.0" prefWidth="1280.0">
-                     <children>
-                        <TableView layoutX="10.0" layoutY="14.0" prefHeight="467.0" prefWidth="1260.0">
-                          <columns>
-                            <TableColumn fx:id="colunaRenavam" prefWidth="315.0" text="Renavam" />
-                            <TableColumn fx:id="colunaPlaca" prefWidth="315.0" text="Placa" />
-                              <TableColumn fx:id="colunaAno" prefWidth="315.0" text="Ano" />
-                              <TableColumn fx:id="colunaChassi" prefWidth="313.0" text="Chassi" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-        </content>
-      </Tab>
-  </tabs>
-</TabPane>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PJP2023.Projeto.integrador.Controller.Controller">
+   <children>
+      <MenuBar fx:id="mnCadastro">
+        <menus>
+          <Menu mnemonicParsing="false" text="Novo Cadastro">
+            <items>
+              <MenuItem fx:id="mniMarca" mnemonicParsing="false" onAction="#CadastroMarca" text="Marca" />
+                  <MenuItem fx:id="mniModelo" mnemonicParsing="false" onAction="#CadastroModelo" text="Modelo" />
+                  <MenuItem fx:id="mniVeiculo" mnemonicParsing="false" onAction="#CadastroVeiculo" text="Veiculo" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="76.0" prefWidth="1013.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <TableView fx:id="tblCarros" prefHeight="420.0" prefWidth="1006.0">
+        <columns>
+          <TableColumn fx:id="clnModelo" prefWidth="310.0" text="Modelo" />
+          <TableColumn fx:id="clnMarca" prefWidth="136.0" text="Marca" />
+            <TableColumn fx:id="clnFabricacao" prefWidth="92.0" text="Fabricação" />
+            <TableColumn fx:id="clnPlaca" prefWidth="103.0" text="Placa" />
+            <TableColumn fx:id="clnRenavam" prefWidth="154.0" text="Renavam" />
+            <TableColumn fx:id="clnChassi" prefWidth="221.0" text="Chassi" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>

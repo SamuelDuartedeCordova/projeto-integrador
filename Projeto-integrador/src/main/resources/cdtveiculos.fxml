@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PJP2023.Projeto.integrador.Controller.VeiculoController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placa: " />
+            <Text layoutX="20.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Renavam: " />
+            <Text layoutX="300.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chassi: " />
+            <Text layoutX="246.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ano Fabricaçào: " />
+            <Text layoutX="25.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo: " />
+            <TextField fx:id="placaVcl" layoutX="62.0" layoutY="9.0" prefHeight="31.0" prefWidth="143.0" />
+            <TextField fx:id="anoVcl" layoutX="355.0" layoutY="9.0" prefHeight="31.0" prefWidth="90.0" />
+            <TextField fx:id="renavamVcl" layoutX="88.0" layoutY="57.0" />
+            <TextField fx:id="chassiVcl" layoutX="352.0" layoutY="57.0" />
+            <ChoiceBox fx:id="modeloVcl" layoutX="88.0" layoutY="105.0" prefHeight="31.0" prefWidth="187.0" />
+            <Button fx:id="btnSalvarVcl" layoutX="22.0" layoutY="155.0" mnemonicParsing="false" onAction="#SalvarVeiculo" text="Salvar" />
+            <Button fx:id="btnCancelarVcl" layoutX="117.0" layoutY="155.0" mnemonicParsing="false" onAction="#CancelarVeiculo" text="Cancelar" />
+            <Button fx:id="btnExcluirVcl" layoutX="507.0" layoutY="155.0" mnemonicParsing="false" onAction="#ExcluirVeiculo" text="Excluir" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="341.0" prefWidth="617.0">
+         <children>
+            <TableView fx:id="tblVcl" layoutX="1.0" layoutY="-4.0" prefHeight="340.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="clnModeloVcl" prefWidth="139.0" text="Modelo" />
+                <TableColumn fx:id="clnPlacaVcl" prefWidth="94.0" text="Placa" />
+                  <TableColumn fx:id="clnRenavamVcl" prefWidth="127.0" text="Renavam" />
+                  <TableColumn fx:id="clnChassiVcl" prefWidth="151.0" text="Chassi" />
+                  <TableColumn fx:id="clnAnoVcl" prefWidth="88.0" text="Ano" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

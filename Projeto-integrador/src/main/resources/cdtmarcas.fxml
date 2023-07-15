@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PJP2023.Projeto.integrador.Controller.MarcaController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="362.0">
+         <children>
+            <TextField fx:id="marca" layoutX="74.0" layoutY="92.0" />
+            <Text layoutX="86.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite o Nome da Marca" />
+            <Button fx:id="btnSalvarMarca" layoutX="74.0" layoutY="156.0" mnemonicParsing="false" onAction="#SalvarMarca" prefHeight="31.0" prefWidth="77.0" text="Salvar" />
+            <Button fx:id="btnCancelarMarca" layoutX="184.0" layoutY="156.0" mnemonicParsing="false" onAction="#CancelarMarca" text="Cancelar" />
+            <Button fx:id="btnExcluirMarca" layoutX="129.0" layoutY="230.0" mnemonicParsing="false" onAction="#ExcluirMarca" prefHeight="31.0" prefWidth="77.0" text="Excluir" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="400.0" prefWidth="245.0">
+         <children>
+            <TableView fx:id="tbnMarca" layoutY="2.0" prefHeight="391.0" prefWidth="242.0">
+              <columns>
+                <TableColumn fx:id="tblMarca" prefWidth="237.0" text="Marcas Cadastradas" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
