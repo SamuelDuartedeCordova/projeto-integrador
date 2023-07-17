@@ -1,10 +1,12 @@
 package PJP2023.Projeto.integrador.Models;
 
 public class Modelos {
+    private String id;
     private String nome;
     private String cambio;
     private String combustivel;
     private String carroceria;
+    private Integer portas;
     private String cor;
     private Integer potencia;
     private Integer idMarcas;
@@ -22,6 +24,7 @@ public class Modelos {
     }
 
     public Modelos(String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer portas) {
+        this.id = id;
         this.nome = nome;
         this.cambio = cambio;
         this.combustivel = combustivel;
@@ -31,7 +34,9 @@ public class Modelos {
         this.portas = portas;
     }
 
-    private Integer portas;
+    public String getId() {return id; }
+
+    public void setId(String id) {this.id = id; }
 
     public String getNome() {
         return nome;
@@ -56,6 +61,13 @@ public class Modelos {
     public void setCombustivel(String combustivel) {
         this.combustivel = combustivel;
     }
+    public Integer getPotencia() {
+        return potencia;
+    }
+
+    public void setPotencia(Integer potencia) {
+        this.potencia = potencia;
+    }
 
     public String getCarroceria() {
         return carroceria;
@@ -63,6 +75,13 @@ public class Modelos {
 
     public void setCarroceria(String carroceria) {
         this.carroceria = carroceria;
+    }
+    public Integer getPortas() {
+        return portas;
+    }
+
+    public void setPortas(Integer portas) {
+        this.portas = portas;
     }
 
     public String getCor() {
@@ -73,19 +92,5 @@ public class Modelos {
         this.cor = cor;
     }
 
-    public Integer getPotencia() {
-        return potencia;
-    }
 
-    public void setPotencia(Integer potencia) {
-        this.potencia = potencia;
-    }
-
-    public Integer getPortas() {
-        return portas;
-    }
-
-    public void setPortas(Integer portas) {
-        this.portas = portas;
-    }
 }
