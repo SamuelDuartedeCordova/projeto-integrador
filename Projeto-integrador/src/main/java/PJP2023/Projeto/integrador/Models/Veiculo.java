@@ -4,11 +4,24 @@ import java.util.Date;
 
 public class Veiculo {
 
+    private Integer id;
     private Integer renavam;
     private Date anoFabricacao;
     private Integer idModelos;
     private String placa;
     private String chassi;
+
+    public Veiculo(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Veiculo(Integer renavam, Date anoFabricacao, Integer idModelos, String placa, String chassi) {
         this.renavam = renavam;
