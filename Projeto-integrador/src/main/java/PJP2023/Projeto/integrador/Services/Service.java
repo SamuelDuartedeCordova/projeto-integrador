@@ -22,8 +22,10 @@ public class Service {
 
 
             while (rs.next()){
-                Marcas marcas = new Marcas(rs.getInt("id"), rs.getString("marca");
+                Marcas marcas = new Marcas(rs.getInt("id"), rs.getString("marca"));
+                out.add(marcas);
             }
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -2,7 +2,7 @@ package PJP2023.Projeto.integrador.Models;
 
 public class Marcas {
 
-    public Marcas(String nome) {
+    public Marcas(int id, String nome) {
         this.nome = nome;
     }
 
