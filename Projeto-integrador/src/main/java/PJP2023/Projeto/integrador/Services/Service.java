@@ -67,7 +67,7 @@ public class Service {
         return false;
     }
 
-    public static boolean atualizarMarcas(int idMarcas){
+    public static boolean atualizarMarcas(int idMarcas, Marcas marcas){
         try {
             Connection conn = conexao.getConexao();
 
