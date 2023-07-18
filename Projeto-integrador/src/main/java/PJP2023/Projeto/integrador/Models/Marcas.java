@@ -2,26 +2,29 @@ package PJP2023.Projeto.integrador.Models;
 
 public class Marcas {
     private Integer id;
-    private String nome;
+    private String marca;
 
-    public Marcas(Integer id, String nome) {
+    public Marcas(Integer id, String marca) {
         this.id = id;
-        this.nome = nome;
+        this.marca = marca;
     }
 
     public Integer getId() {
         return id;
     }
 
+    public Marcas() {
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 }

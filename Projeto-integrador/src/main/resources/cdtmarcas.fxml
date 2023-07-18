@@ -9,7 +9,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="362.0">
          <children>
-            <TextField fx:id="marca" layoutX="74.0" layoutY="92.0" />
+            <TextField fx:id="campoMarca" layoutX="74.0" layoutY="92.0" />
             <Text layoutX="86.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite o Nome da Marca" />
             <Button fx:id="btnSalvarMarca" layoutX="74.0" layoutY="156.0" mnemonicParsing="false" onAction="#SalvarMarca" prefHeight="31.0" prefWidth="77.0" text="Salvar" />
             <Button fx:id="btnCancelarMarca" layoutX="184.0" layoutY="156.0" mnemonicParsing="false" onAction="#CancelarMarca" text="Cancelar" />
@@ -18,9 +18,9 @@
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="245.0">
          <children>
-            <TableView fx:id="tbnMarca" layoutY="2.0" prefHeight="391.0" prefWidth="242.0">
+            <TableView fx:id="tblMarca" layoutY="2.0" prefHeight="391.0" prefWidth="242.0">
               <columns>
-                <TableColumn fx:id="tblMarca" prefWidth="237.0" text="Marcas Cadastradas" />
+                <TableColumn fx:id="clnMarca" prefWidth="237.0" text="Marcas Cadastradas" />
               </columns>
             </TableView>
          </children>

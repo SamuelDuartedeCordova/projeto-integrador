@@ -16,21 +16,21 @@ public class ServiceMarca {
 
         try {
             Connection conn = conexao.getConexao();
-
             Statement sta = conn.createStatement();
-            ResultSet rs = sta.executeQuery("select * from nome_do_fabricante;");
-
+            ResultSet rs = sta.executeQuery("select * from marcas;");
 
             while (rs.next()){
-                Marcas marcas = new Marcas(rs.getInt("id"), rs.getString("marca"));
+                //Marcas marcas = new Marcas(rs.getInt("id"), rs.getString("nome_do_fabricante"));
+                //out.add(marcas);
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome_do_fabricante");
+                Marcas marcas = new Marcas(id, nome);
                 out.add(marcas);
             }
 
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
         return out;
     }
 
@@ -41,7 +41,7 @@ public class ServiceMarca {
             String sqlInsert = "insert into public.marcas (nome_do_fabricante) values (?)";
 
             PreparedStatement pre = conn.prepareStatement(sqlInsert);
-            pre.setString(1, marcas.getNome());
+            pre.setString(1, marcas.getMarca());
 
 
             pre.execute();
@@ -69,14 +69,15 @@ public class ServiceMarca {
         return false;
     }
 
-    public static boolean atualizarMarcas(int idMarcas, Marcas marcas){
+    public static boolean atualizarMarcas(int index, Marcas mar){
         try {
             Connection conn = conexao.getConexao();
 
             String updateSql = "update public.marcas set nome_do_fabricante = ? where id = ?";
 
             PreparedStatement ps = conn.prepareStatement(updateSql);
-            ps.setString(1, marcas.getNome());
+            ps.setString(1, mar.getMarca());
+            ps.setInt(2, index);
 
             return ps.execute();
         } catch (Exception e){

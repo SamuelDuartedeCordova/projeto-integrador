@@ -22,7 +22,9 @@ public class ServiceModelo {
 
 
             while (rs.next()){
+
                 Modelos modelos = new Modelos();
+               
                 modelos.setId(rs.getInt(1));
                 modelos.setNome(rs.getString(2));
                 modelos.setCambio(rs.getString(3));
