@@ -3,6 +3,8 @@ package PJP2023.Projeto.integrador.Controller;
 import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Modelos;
 import PJP2023.Projeto.integrador.Services.ServiceMarca;
+import PJP2023.Projeto.integrador.Services.ServiceModelo;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Window;
+import javafx.util.StringConverter;
+
 
 import java.util.List;
 
@@ -142,13 +146,26 @@ public class ModeloController {
     }
 
     public void carregarLista() {
-        /*try {
+        try {
             tblModelos.getItems().remove(0, tblModelos.getItems().size());
-            List<Marcas> modelosList = ServiceMarca.carregarMarcas();
+            List<Modelos> modelosList = ServiceModelo.carregarModelos();
             tblModelos.getItems().addAll(modelosList);
+            List<Marcas> marcas = ServiceMarca.carregarMarcas();
+            marcaMdl.setItems(FXCollections.observableArrayList(marcas));
+            marcaMdl.setConverter(new StringConverter<Marcas>() {
+                @Override
+                public String toString(Marcas marca) {
+                    return marca.getMarca();
+                }
+                @Override
+                public Marcas fromString(String string) {
+                    return null;
+                }
+            });
+
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public boolean campoVazio (String texto){
