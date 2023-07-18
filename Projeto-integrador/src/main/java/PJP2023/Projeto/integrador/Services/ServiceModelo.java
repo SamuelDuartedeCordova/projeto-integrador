@@ -25,8 +25,8 @@ public class ServiceModelo {
 
 
             while (rs.next()){
-                Modelos modelos = new Modelos();
-                modelos.setId(rs.getString(1));
+               /* Modelos modelos = new Modelos();
+                modelos.setId(rs.getInt(1));
                 modelos.setNome(rs.getString(2));
                 modelos.setCambio(rs.getString(3));
                 modelos.setCombustivel(rs.getString(4));
@@ -34,7 +34,7 @@ public class ServiceModelo {
                 modelos.setCarroceria(rs.getString(6));
                 modelos.setPortas(rs.getInt(7));
                 modelos.setCor(rs.getString(8));
-                out.add(modelos);
+                out.add(modelos);*/
             }
 
 

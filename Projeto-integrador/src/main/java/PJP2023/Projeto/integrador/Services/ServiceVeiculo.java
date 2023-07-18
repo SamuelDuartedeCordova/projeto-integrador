@@ -35,8 +35,6 @@ public class ServiceVeiculo {
         return out;
     }
     private static void salvarVeiculo (Veiculo veiculo){
-        try {
 
-        }
     }
 }
