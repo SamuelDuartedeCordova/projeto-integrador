@@ -11,17 +11,7 @@ public class Modelos {
     private Integer potencia;
     private Integer idMarcas;
 
-    public Modelos(Integer idMarcas) {
-        this.idMarcas = idMarcas;
-    }
-
-    public Integer getIdMarcas() {
-        return idMarcas;
-    }
-
-    public void setIdMarcas(Integer idMarcas) {
-        this.idMarcas = idMarcas;
-    }
+    private Integer portas;
 
     public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas) {
         this.id = id;
@@ -34,7 +24,13 @@ public class Modelos {
         this.portas = portas;
     }
 
-    private Integer portas;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -84,11 +80,19 @@ public class Modelos {
         this.potencia = potencia;
     }
 
-    public Integer getPortas() {
-        return portas;
+    public Integer getIdMarcas() {
+        return idMarcas;
     }
 
     public void setIdMarcas(Integer idMarcas) {
         this.idMarcas = idMarcas;
+    }
+
+    public Integer getPortas() {
+        return portas;
+    }
+
+    public void setPortas(Integer portas) {
+        this.portas = portas;
     }
 }
