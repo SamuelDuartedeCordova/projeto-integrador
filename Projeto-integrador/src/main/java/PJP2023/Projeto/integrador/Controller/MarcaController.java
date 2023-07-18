@@ -30,7 +30,7 @@ public class MarcaController {
         btnExcluirMarca.setDisable(true);
         //Colunas da TableView
         clnMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-        this.carregarEnderecos();
+        this.carregarLista();
         // Configurar o evento de clique duplo na tabela
         tblMarca.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent evt) {
@@ -69,6 +69,10 @@ public class MarcaController {
                     if (resposta == ButtonType.OK) {
                         //Atualiza item na lista
                         ServiceMarca.atualizarMarcas(index, mar);
+                        LimparCampos();
+                        index = -1;
+                        carregarLista();
+                        btnExcluirMarca.setDisable(true);
                     }
                 });
             }
@@ -89,7 +93,10 @@ public class MarcaController {
             if (resposta == ButtonType.OK) {
                 ServiceMarca.deletarMarcas(index);
                 index = -1;
-                stage.close();
+                LimparCampos();
+                index = -1;
+                carregarLista();
+                btnExcluirMarca.setDisable(true);
             }
         });
     }
@@ -98,7 +105,7 @@ public class MarcaController {
         this.stage = stage;
     }
 
-    public void carregarEnderecos() {
+    public void carregarLista() {
         try {
             tblMarca.getItems().remove(0, tblMarca.getItems().size());
             List<Marcas> marcasList = ServiceMarca.carregarMarcas();
@@ -115,5 +122,11 @@ public class MarcaController {
         else{
             return false;
         }
+    }
+
+    public void LimparCampos() {
+        campoMarca.setText("");
+        campoMarca.setStyle("-fx-background-color: white;");
+
     }
 }
