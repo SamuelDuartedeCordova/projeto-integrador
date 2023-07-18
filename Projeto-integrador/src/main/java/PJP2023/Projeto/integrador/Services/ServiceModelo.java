@@ -18,7 +18,7 @@ public class ServiceModelo {
             Connection conn = conexao.getConexao();
 
             Statement sta = conn.createStatement();
-            ResultSet rs = sta.executeQuery("select * from modelos;");
+            ResultSet rs = sta.executeQuery("select * from public.modelos;");
 
 
             while (rs.next()){
