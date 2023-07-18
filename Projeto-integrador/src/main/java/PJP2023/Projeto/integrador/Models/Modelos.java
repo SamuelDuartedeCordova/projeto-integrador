@@ -5,8 +5,25 @@ public class Modelos {
     private Integer id;
     private String nome;
     private String cambio;
+
+    public Modelos() {
+    }
+
     private String combustivel;
     private String carroceria;
+
+    public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas, Integer portas) {
+        this.id = id;
+        this.nome = nome;
+        this.cambio = cambio;
+        this.combustivel = combustivel;
+        this.carroceria = carroceria;
+        this.cor = cor;
+        this.potencia = potencia;
+        this.idMarcas = idMarcas;
+        this.portas = portas;
+    }
+
     private String cor;
     private Integer potencia;
     private Integer idMarcas;

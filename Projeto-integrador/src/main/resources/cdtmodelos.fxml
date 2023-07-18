@@ -5,12 +5,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PJP2023.Projeto.integrador.Controller.ModeloController">
    <children>
       <AnchorPane prefHeight="288.0" prefWidth="605.0">
          <children>
-            <ChoiceBox fx:id="MarcaMdl" layoutX="399.0" layoutY="63.0" prefHeight="31.0" prefWidth="170.0" />
+            <ChoiceBox fx:id="marcaMdl" layoutX="399.0" layoutY="63.0" prefHeight="31.0" prefWidth="170.0" />
             <Text layoutX="350.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca: " />
             <TextField fx:id="nomeMdl" layoutX="80.0" layoutY="19.0" />
             <Text layoutX="32.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: " />
@@ -28,10 +27,10 @@
             <ChoiceBox fx:id="carroceriaMdl" layoutX="269.0" layoutY="161.0" prefHeight="31.0" prefWidth="170.0" />
             <Button fx:id="btnSalvarMdl" layoutX="46.0" layoutY="235.0" mnemonicParsing="false" onAction="#SalvarModelo" text="Salvar" />
             <Button fx:id="btnCancelarMdl" layoutX="144.0" layoutY="235.0" mnemonicParsing="false" onAction="#CancelarModelo" text="Cancelar" />
-            <Button layoutX="522.0" layoutY="236.0" mnemonicParsing="false" onAction="#ExcluirModelo" text="Excluir" />
+            <Button fx:id="btnExcluirMdl" layoutX="522.0" layoutY="236.0" mnemonicParsing="false" onAction="#ExcluirModelo" text="Excluir" />
          </children>
       </AnchorPane>
-      <TableView fx:id="tblMdl" prefHeight="286.0" prefWidth="605.0">
+      <TableView fx:id="tblModelos" prefHeight="286.0" prefWidth="605.0">
         <columns>
           <TableColumn fx:id="clnMarcaMdl" prefWidth="131.0" text="Marca" />
           <TableColumn fx:id="clnNomeMdl" prefWidth="128.0" text="Nome" />
