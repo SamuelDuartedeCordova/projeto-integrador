@@ -11,8 +11,16 @@ public class Veiculo {
     private String placa;
     private String chassi;
 
-    public Veiculo(Integer id) {
+    public Veiculo(Integer id, Integer renavam, Date anoFabricacao, Integer idModelos, String placa, String chassi) {
         this.id = id;
+        this.renavam = renavam;
+        this.anoFabricacao = anoFabricacao;
+        this.idModelos = idModelos;
+        this.placa = placa;
+        this.chassi = chassi;
+    }
+
+    public Veiculo() {
     }
 
     public Integer getId() {
@@ -21,14 +29,6 @@ public class Veiculo {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Veiculo(Integer renavam, Date anoFabricacao, Integer idModelos, String placa, String chassi) {
-        this.renavam = renavam;
-        this.anoFabricacao = anoFabricacao;
-        this.idModelos = idModelos;
-        this.placa = placa;
-        this.chassi = chassi;
     }
 
     public Integer getRenavam() {

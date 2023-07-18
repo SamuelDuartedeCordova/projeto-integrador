@@ -1,6 +1,8 @@
 package PJP2023.Projeto.integrador.Models;
 
 public class Modelos {
+
+    private Integer id;
     private String nome;
     private String cambio;
     private String combustivel;
@@ -9,29 +11,27 @@ public class Modelos {
     private Integer potencia;
     private Integer idMarcas;
 
-    public Modelos(Integer idMarcas) {
-        this.idMarcas = idMarcas;
+    public Modelos() {
     }
 
-    public Integer getIdMarcas() {
-        return idMarcas;
-    }
-
-    public void setIdMarcas(Integer idMarcas) {
-        this.idMarcas = idMarcas;
-    }
-
-    public Modelos(String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer portas) {
+    public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas) {
+        this.id = id;
         this.nome = nome;
         this.cambio = cambio;
         this.combustivel = combustivel;
         this.carroceria = carroceria;
         this.cor = cor;
         this.potencia = potencia;
-        this.portas = portas;
+        this.idMarcas = idMarcas;
     }
 
-    private Integer portas;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -81,11 +81,11 @@ public class Modelos {
         this.potencia = potencia;
     }
 
-    public Integer getPortas() {
-        return portas;
+    public Integer getIdMarcas() {
+        return idMarcas;
     }
 
-    public void setPortas(Integer portas) {
-        this.portas = portas;
+    public void setIdMarcas(Integer idMarcas) {
+        this.idMarcas = idMarcas;
     }
 }

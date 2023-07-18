@@ -22,8 +22,9 @@ public class ServiceVeiculo {
 
         while (resultSet.next()){
             Veiculo veiculo = new Veiculo();
-            veiculo.setRenavam(resultSet.getInt(1));
+            veiculo.setId(resultSet.getInt(1));
         }
 
+        return out;
     }
 }
