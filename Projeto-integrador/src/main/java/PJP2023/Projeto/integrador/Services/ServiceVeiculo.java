@@ -23,8 +23,20 @@ public class ServiceVeiculo {
         while (resultSet.next()){
             Veiculo veiculo = new Veiculo();
             veiculo.setId(resultSet.getInt(1));
+            veiculo.setRenavam(resultSet.getInt(2));
+            veiculo.setAnoFabricacao(resultSet.getDate(3));
+            veiculo.setIdModelos(resultSet.getInt(4));
+            veiculo.setPlaca(resultSet.getString(5));
+            veiculo.setChassi(resultSet.getString(6));
+
+            out.add(veiculo);
         }
 
         return out;
+    }
+    private static void salvarVeiculo (Veiculo veiculo){
+        try {
+
+        }
     }
 }
