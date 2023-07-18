@@ -24,6 +24,10 @@ public class Modelos {
         this.portas = portas;
     }
 
+    public Modelos() {
+
+    }
+
     public Integer getId() {
         return id;
     }
