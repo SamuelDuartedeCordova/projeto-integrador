@@ -36,9 +36,8 @@ public class ServiceModelo {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
         return out;
     }
 
@@ -90,21 +89,19 @@ public class ServiceModelo {
 
             String updateSql = "update public.modelos (id, nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
-            PreparedStatement pre = conn.prepareStatement(updateSql);
-            pre.setInt(1, modelos.getId());
-            pre.setString(2, modelos.getNome());
-            pre.setString(3, modelos.getCambio());
-            pre.setString(4, modelos.getCombustivel());
-            pre.setInt(5, modelos.getPotencia());
-            pre.setString(6, modelos.getCarroceria());
-            pre.setInt(7, modelos.getPortas());
-            pre.setString(8, modelos.getCor());
+            PreparedStatement ps = conn.prepareStatement(updateSql);
+            ps.setInt(1, modelos.getId());
+            ps.setString(2, modelos.getNome());
+            ps.setString(3, modelos.getCambio());
+            ps.setString(4, modelos.getCombustivel());
+            ps.setInt(5, modelos.getPotencia());
+            ps.setString(6, modelos.getCarroceria());
+            ps.setInt(7, modelos.getPortas());
+            ps.setString(8, modelos.getCor());
 
-            pre.execute();
-
-            pre.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            return ps.execute();
+        } catch (Exception e){
+            e.printStackTrace();
         }
 
         return false;
