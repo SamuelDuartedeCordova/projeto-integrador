@@ -1,5 +1,6 @@
 package PJP2023.Projeto.integrador.Services;
 
+import PJP2023.Projeto.integrador.Controller.ModeloController;
 import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Modelos;
 import PJP2023.Projeto.integrador.database.ConexaoDatabase;
@@ -33,6 +34,8 @@ public class ServiceModelo {
                 modelos.setCarroceria(rs.getString(6));
                 modelos.setPortas(rs.getInt(7));
                 modelos.setCor(rs.getString(8));
+                modelos.setIdMarcas(rs.getInt(9));
+
                 out.add(modelos);
             }
 
@@ -47,7 +50,7 @@ public class ServiceModelo {
         try {
             Connection conn = conexao.getConexao();
 
-            String sqlInsert = "insert into public.modelos (nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsert = "insert into public.modelos (nome, cambio, combustivel, potencia, carroceria, portas, cor, id_marcas) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pre = conn.prepareStatement(sqlInsert);
             //pre.setInt(1, modelos.getId());
@@ -58,6 +61,7 @@ public class ServiceModelo {
             pre.setString(5, modelos.getCarroceria());
             pre.setInt(6, modelos.getPortas());
             pre.setString(7, modelos.getCor());
+            pre.setInt(8, modelos.getIdMarcas());
 
 
             pre.execute();
@@ -68,14 +72,14 @@ public class ServiceModelo {
         }
     }
 
-    public static boolean deletarModelos(int idModelos){
+    public static boolean deletarModelos(int index){
         try {
             Connection conn = conexao.getConexao();
 
-            String deleteSql = "delete from public.marcas where id = ?";
+            String deleteSql = "delete from public.modelos where id = ?";
 
             PreparedStatement ps = conn.prepareStatement(deleteSql);
-            ps.setInt(1, idModelos);
+            ps.setInt(1, index);
 
             return ps.execute();
         } catch (Exception e){
@@ -85,21 +89,36 @@ public class ServiceModelo {
         return false;
     }
 
-    public static boolean atualizarModelos(int idMarcas, Modelos modelos){
+    public static boolean atualizarModelos(int index, Modelos modelos){
         try {
             Connection conn = conexao.getConexao();
 
-            String updateSql = "update public.modelos (id, nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            //String updateSql = "update public.modelos (id, nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String updateSql = "update public.modelos set nome = ?, cambio = ?, combustivel = ?, potencia = ?, carroceria = ?, portas = ?, cor = ?, id_marcas = ? where id = ?";
 
             PreparedStatement ps = conn.prepareStatement(updateSql);
-            ps.setInt(1, modelos.getId());
-            ps.setString(2, modelos.getNome());
-            ps.setString(3, modelos.getCambio());
-            ps.setString(4, modelos.getCombustivel());
-            ps.setInt(5, modelos.getPotencia());
-            ps.setString(6, modelos.getCarroceria());
-            ps.setInt(7, modelos.getPortas());
-            ps.setString(8, modelos.getCor());
+            //ps.setInt(1, modelos.getId());
+            ps.setString(1, modelos.getNome());
+
+            try{
+                ps.setString(2, modelos.getCambio());
+            }catch (Exception e){
+                System.out.println("Teste Cambio");
+            }
+
+            ps.setString(3, modelos.getCombustivel());
+
+            try{
+                ps.setInt(4, modelos.getPotencia());
+            }catch (Exception e){
+                ps.setNull(4, Types.INTEGER);
+            }
+
+            ps.setString(5, modelos.getCarroceria());
+            ps.setInt(6, modelos.getPortas());
+            ps.setString(7, modelos.getCor());
+            ps.setInt(8, modelos.getIdMarcas());
+            ps.setInt(9, index);
 
             return ps.execute();
         } catch (Exception e){

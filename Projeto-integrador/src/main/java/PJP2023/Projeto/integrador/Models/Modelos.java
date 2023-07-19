@@ -24,6 +24,15 @@ public class Modelos {
     private Integer potencia;
     private Integer idMarcas;
     private Integer portas;
+    private String nomeMarca;
+
+    public String getNomeMarca() {
+        return nomeMarca;
+    }
+
+    public void setNomeMarca(String nomeMarca) {
+        this.nomeMarca = nomeMarca;
+    }
 
     public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas, Integer portas) {
         this.id = id;

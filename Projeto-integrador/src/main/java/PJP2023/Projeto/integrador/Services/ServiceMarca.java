@@ -86,5 +86,14 @@ public class ServiceMarca {
 
         return false;
     }
-
+    public static Marcas carregarMarcaPorId(int id) {
+        // Supondo que você tenha uma lista de todas as marcas chamada "marcasList"
+        // e o método getId() na classe Marcas para obter o ID.
+        return carregarMarcas().stream()
+                .filter(marca -> marca.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 }
+
+
