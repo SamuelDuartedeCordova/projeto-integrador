@@ -95,8 +95,6 @@ public class ModeloController {
                     nomeMdl.setText(mod.getNome());
                     potenciaMdl.setText(Integer.toString(mod.getPotencia()));
                     corMdl.setText(mod.getCor());
-                    //marcaMdl.setValue(mod.getIdMarcas());
-                    //marcaMdl.setValue(ServiceMarca.carregarMarcaPorId(mod.getIdMarcas()));
                     for (Object item : marcaMdl.getItems()) {
                         if (item instanceof Marcas) {
                             Marcas marca = (Marcas) item;
@@ -246,30 +244,7 @@ public class ModeloController {
         this.stage = stage;
     }
 
-   /* public void carregarLista() {
-        try {
-            tblModelos.getItems().remove(0, tblModelos.getItems().size());
-            List<Modelos> modelosList = ServiceModelo.carregarModelos();
-            tblModelos.getItems().addAll(modelosList);
-            List<Marcas> marcas = ServiceMarca.carregarMarcas();
-            marcaMdl.setItems(FXCollections.observableArrayList(marcas));
 
-            marcaMdl.setConverter(new StringConverter<Marcas>() {
-                @Override
-                public String toString(Marcas marca) {
-                    return marca.getMarca();
-                }
-                @Override
-                public Marcas fromString(String string) {
-                    return null;
-                }
-            });
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
    public void carregarLista() {
        try {
            tblModelos.getItems().remove(0, tblModelos.getItems().size());

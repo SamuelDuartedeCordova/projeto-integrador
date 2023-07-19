@@ -53,7 +53,6 @@ public class ServiceModelo {
             String sqlInsert = "insert into public.modelos (nome, cambio, combustivel, potencia, carroceria, portas, cor, id_marcas) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pre = conn.prepareStatement(sqlInsert);
-            //pre.setInt(1, modelos.getId());
             pre.setString(1, modelos.getNome());
             pre.setString(2, modelos.getCambio());
             pre.setString(3, modelos.getCombustivel());
@@ -92,12 +91,8 @@ public class ServiceModelo {
     public static boolean atualizarModelos(int index, Modelos modelos){
         try {
             Connection conn = conexao.getConexao();
-
-            //String updateSql = "update public.modelos (id, nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?, ?)";
             String updateSql = "update public.modelos set nome = ?, cambio = ?, combustivel = ?, potencia = ?, carroceria = ?, portas = ?, cor = ?, id_marcas = ? where id = ?";
-
             PreparedStatement ps = conn.prepareStatement(updateSql);
-            //ps.setInt(1, modelos.getId());
             ps.setString(1, modelos.getNome());
 
             try{
