@@ -12,16 +12,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Modelos {
+    public Modelos() {
+    }
 
     private Integer id;
     private String nome;
     private String cambio;
-
-    public Modelos() {
-    }
-
     private String combustivel;
     private String carroceria;
+    private String cor;
+    private Integer potencia;
+    private Integer idMarcas;
+    private Integer portas;
 
     public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas, Integer portas) {
         this.id = id;
@@ -35,11 +37,7 @@ public class Modelos {
         this.portas = portas;
     }
 
-    private String cor;
-    private Integer potencia;
-    private Integer idMarcas;
 
-    private Integer portas;
 
     public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas) {
         this.id = id;

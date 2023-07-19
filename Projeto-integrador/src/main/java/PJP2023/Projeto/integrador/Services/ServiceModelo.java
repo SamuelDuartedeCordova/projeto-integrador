@@ -47,17 +47,17 @@ public class ServiceModelo {
         try {
             Connection conn = conexao.getConexao();
 
-            String sqlInsert = "insert into public.modelos (id, nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsert = "insert into public.modelos (nome, cambio, combustivel, potencia, carroceria, portas, cor) values (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pre = conn.prepareStatement(sqlInsert);
-            pre.setInt(1, modelos.getId());
-            pre.setString(2, modelos.getNome());
-            pre.setString(3, modelos.getCambio());
-            pre.setString(4, modelos.getCombustivel());
-            pre.setInt(5, modelos.getPotencia());
-            pre.setString(6, modelos.getCarroceria());
-            pre.setInt(7, modelos.getPortas());
-            pre.setString(8, modelos.getCor());
+            //pre.setInt(1, modelos.getId());
+            pre.setString(1, modelos.getNome());
+            pre.setString(2, modelos.getCambio());
+            pre.setString(3, modelos.getCombustivel());
+            pre.setInt(4, modelos.getPotencia());
+            pre.setString(5, modelos.getCarroceria());
+            pre.setInt(6, modelos.getPortas());
+            pre.setString(7, modelos.getCor());
 
 
             pre.execute();
@@ -107,6 +107,24 @@ public class ServiceModelo {
         }
 
         return false;
+    }
+    public static int buscarIdMarca(String marca) {
+        try {
+            Connection conn = conexao.getConexao();
+
+            String selectSql = "select id from marcas where nome_do_fabricante = '" + marca + "'";
+
+            Statement sta = conn.createStatement();
+            ResultSet rs = sta.executeQuery(selectSql);
+
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return -1; // Retorna -1 se a marca não for encontrada
     }
 
 }

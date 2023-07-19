@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PJP2023.Projeto.integrador.Controller.ModeloController">
    <children>
       <AnchorPane prefHeight="288.0" prefWidth="605.0">
          <children>
@@ -16,7 +16,7 @@
             <Text layoutX="308.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Potência(cv):  " />
             <TextField fx:id="potenciaMdl" layoutX="400.0" layoutY="18.0" prefHeight="31.0" prefWidth="170.0" />
             <Text layoutX="49.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cor: " />
-            <TextField fx:id="CorMdl" layoutX="80.0" layoutY="63.0" />
+            <TextField fx:id="corMdl" layoutX="80.0" layoutY="63.0" />
             <Text layoutX="20.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cambio: " />
             <ChoiceBox fx:id="cambioMdl" layoutX="80.0" layoutY="114.0" prefHeight="31.0" prefWidth="187.0" />
             <Text layoutX="309.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Combustivel: " />
