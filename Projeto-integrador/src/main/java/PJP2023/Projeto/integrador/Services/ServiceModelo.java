@@ -22,7 +22,6 @@ public class ServiceModelo {
             Statement sta = conn.createStatement();
             ResultSet rs = sta.executeQuery("select * from public.modelos;");
 
-
             while (rs.next()){
 
                 Modelos modelos = new Modelos();
@@ -39,7 +38,6 @@ public class ServiceModelo {
 
                 out.add(modelos);
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -143,8 +141,6 @@ public class ServiceModelo {
     }
 
     public static Modelos carregarModeloId(int id) {
-        // Supondo que você tenha uma lista de todas as marcas chamada "marcasList"
-        // e o método getId() na classe Marcas para obter o ID.
         return carregarModelos().stream()
                 .filter(modelos -> modelos.getId() == id)
                 .findFirst()

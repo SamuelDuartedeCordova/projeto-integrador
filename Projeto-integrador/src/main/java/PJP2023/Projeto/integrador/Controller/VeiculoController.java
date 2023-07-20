@@ -18,7 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
-
 import java.awt.*;
 import java.math.BigInteger;
 import java.text.ParseException;
@@ -101,8 +100,8 @@ public class VeiculoController {
         c = 0;
 
         //Verificar Placa
-        if (validarPlacaBrasileira(placaVcl.getText()) || validarPlacaMercosul(placaVcl.getText())) {
-            vei.setPlaca(placaVcl.getText());
+        if (validarPlacaBrasileira(placaVcl.getText().toUpperCase()) || validarPlacaMercosul(placaVcl.getText().toUpperCase())) {
+            vei.setPlaca(placaVcl.getText().toUpperCase());
             placaVcl.setStyle("-fx-background-color: white;");
         } else if (campoVazio(placaVcl.getText())) {
             placaVcl.setStyle("-fx-background-color: pink;");
@@ -187,7 +186,6 @@ public class VeiculoController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ServiceVeiculo.salvarVeiculo(vei);
-
                     stage.close();
                 }
             });
@@ -214,6 +212,7 @@ public class VeiculoController {
     void CancelarVeiculo(ActionEvent event) {
         stage.close();
     }
+
     @FXML
     void ExcluirVeiculo(ActionEvent event) {
         Alert alertaExcluir = new Alert(Alert.AlertType.CONFIRMATION);
@@ -245,7 +244,7 @@ public class VeiculoController {
                 if (modelo != null) {
                     veiculo.setNomeModelo(modelo.getNome());
                 } else {
-                    veiculo.setNomeModelo(""); // Correção: atribuir um valor vazio quando não houver modelo
+                    veiculo.setNomeModelo(""); //atribuir um valor vazio quando não houver modelo
                 }
             }
 
@@ -264,8 +263,6 @@ public class VeiculoController {
 
                 @Override
                 public Modelos fromString(String string) {
-                    // Correção: Implemente a lógica para converter de String para Modelos (se necessário)
-                    // Aqui você pode deixar como "return null;", a menos que precise dessa conversão.
                     return null;
                 }
             });

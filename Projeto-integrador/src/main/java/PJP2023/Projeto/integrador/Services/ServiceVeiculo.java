@@ -35,8 +35,6 @@ public class ServiceVeiculo {
         return out;
     }
 
-
-
     public static void salvarVeiculo(Veiculo veiculo) {
         try {
             Connection conn = conexaoDatabase.getConexao();

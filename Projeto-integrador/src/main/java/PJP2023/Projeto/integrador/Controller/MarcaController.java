@@ -108,7 +108,7 @@ public class MarcaController {
 
         });
     }
-    //Recebe parametros da janela marcas
+    //Recebe parametros da janela
     public void setStage(Stage stage) {
         this.stage = stage;
     }

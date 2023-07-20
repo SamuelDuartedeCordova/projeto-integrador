@@ -54,6 +54,7 @@ public class Controller {
         // Carregar as informações dos veículos do banco de dados e preencher a TableView
         atualizarListaVeiculos();
     }
+
     @FXML
     void CadastroMarca(ActionEvent event) {
         try {

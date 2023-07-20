@@ -19,15 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Window;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-
-
-
-
-
-
 import java.util.List;
-
-
 import java.util.List;
 
 public class ModeloController {
@@ -225,6 +217,7 @@ public class ModeloController {
     void CancelarModelo(ActionEvent event) {
         stage.close();
     }
+
     @FXML
     void ExcluirModelo(ActionEvent event) {
         Alert alertaExcluir = new Alert(Alert.AlertType.CONFIRMATION);
@@ -242,9 +235,9 @@ public class ModeloController {
     }
     //Recebe parametros da janela
     public void setStage(Stage stage) {
+
         this.stage = stage;
     }
-
 
    public void carregarLista() {
        try {

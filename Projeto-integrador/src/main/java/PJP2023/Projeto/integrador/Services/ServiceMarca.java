@@ -20,8 +20,6 @@ public class ServiceMarca {
             ResultSet rs = sta.executeQuery("select * from marcas;");
 
             while (rs.next()){
-                //Marcas marcas = new Marcas(rs.getInt("id"), rs.getString("nome_do_fabricante"));
-                //out.add(marcas);
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome_do_fabricante");
                 Marcas marcas = new Marcas(id, nome);
@@ -43,9 +41,7 @@ public class ServiceMarca {
             PreparedStatement pre = conn.prepareStatement(sqlInsert);
             pre.setString(1, marcas.getMarca());
 
-
             pre.execute();
-
             pre.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -87,15 +83,11 @@ public class ServiceMarca {
         return false;
     }
     public static Marcas carregarMarcaPorId(int id) {
-        // Supondo que você tenha uma lista de todas as marcas chamada "marcasList"
-        // e o método getId() na classe Marcas para obter o ID.
         return carregarMarcas().stream()
                 .filter(marca -> marca.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
-
-
 
 }
 
