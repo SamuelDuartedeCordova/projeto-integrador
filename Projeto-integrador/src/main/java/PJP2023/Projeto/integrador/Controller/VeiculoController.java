@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
 import java.awt.*;
+import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,7 +66,7 @@ public class VeiculoController {
         clnChassiVcl.setCellValueFactory(new PropertyValueFactory<>("chassi"));
         clnAnoVcl.setCellValueFactory(new PropertyValueFactory<>("anoFabricacao"));
 
-        //this.carregarLista();
+        this.carregarLista();
 
         // Configurar o evento de clique duplo na tabela
         tblVcl.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -74,7 +75,7 @@ public class VeiculoController {
                     Veiculo vei = tblVcl.getSelectionModel().getSelectedItem();
                     placaVcl.setText(vei.getPlaca());
                     anoVcl.setText(String.valueOf(vei.getAnoFabricacao()));
-                    renavamVcl.setText(Integer.toString(vei.getRenavam()));
+                    renavamVcl.setText(String.valueOf(vei.getRenavam()));
                     chassiVcl.setText(vei.getChassi());
                     for (Object item : modeloVcl.getItems()) {
                         if (item instanceof Modelos) {
@@ -95,12 +96,14 @@ public class VeiculoController {
 
     @FXML
     void SalvarVeiculo(ActionEvent event) throws ParseException {
+
         Veiculo vei = new Veiculo();
         c = 0;
 
         //Verificar Placa
         if (validarPlacaBrasileira(placaVcl.getText()) || validarPlacaMercosul(placaVcl.getText())) {
             vei.setPlaca(placaVcl.getText());
+            placaVcl.setStyle("-fx-background-color: white;");
         } else if (campoVazio(placaVcl.getText())) {
             placaVcl.setStyle("-fx-background-color: pink;");
             c++;
@@ -118,7 +121,8 @@ public class VeiculoController {
             anoVcl.setStyle("-fx-background-color: pink;");
             c++;
         } else if (anoValido(anoVcl.getText())){
-            vei.setAnoFabricacao(converterAno(anoVcl.getText()));
+            vei.setAnoFabricacao(Integer.parseInt(anoVcl.getText()));
+            anoVcl.setStyle("-fx-background-color: white;");
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ano Invalido");
@@ -133,7 +137,9 @@ public class VeiculoController {
             renavamVcl.setStyle("-fx-background-color: pink;");
             c++;
         }else if(apenasNumeros(renavamVcl.getText()) && (renavamVcl.getText().length() == 11)){
-            vei.setRenavam(Integer.parseInt(renavamVcl.getText()));
+            BigInteger renavam = new BigInteger(renavamVcl.getText());
+            vei.setRenavam(renavam);
+            renavamVcl.setStyle("-fx-background-color: white;");
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Renavam Invalido");
@@ -149,6 +155,7 @@ public class VeiculoController {
             c++;
         }else if(chassiVcl.getText().length() == 17 && chassiVcl.getText().matches("^[A-HJ-NPR-Z0-9]*$")){
             vei.setChassi(chassiVcl.getText());
+            chassiVcl.setStyle("-fx-background-color: white;");
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Chassi Invalido");
@@ -159,12 +166,16 @@ public class VeiculoController {
         }
 
         //Verificar Modelo
-        if (modeloVcl != null) {
-            Modelos modelo = (Modelos) modeloVcl.getValue();
-            vei.setIdModelos(ServiceVeiculo.buscarIdModelo(modelo.getNome()));
-        } else {
-            modeloVcl.setStyle("-fx-background-color: pink;");
-            c++;
+        try{
+            if (modeloVcl != null) {
+                Modelos modelo = (Modelos) modeloVcl.getValue();
+                vei.setIdModelos(ServiceVeiculo.buscarIdModelo(modelo.getNome()));
+            } else {
+                modeloVcl.setStyle("-fx-background-color: pink;");
+                c++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
         //Incluir Novo Registro
@@ -189,16 +200,14 @@ public class VeiculoController {
             alertaSalvar.showAndWait().ifPresent(resposta -> {
                 if (resposta == ButtonType.OK) {
                     ServiceVeiculo.atualizarVeiculo(index, vei);
-                    this.carregarLista();
-                    this.LimparCampos();
                     index = -1;
+                    btnExcluirVcl.setDisable(true);
+                    this.LimparCampos();
+                    this.carregarLista();
                 }
             });
         }
     }
-
-
-
 
     @FXML
     void CancelarVeiculo(ActionEvent event) {
@@ -213,48 +222,12 @@ public class VeiculoController {
             if (resposta == ButtonType.OK) {
                 ServiceVeiculo.deletarVeiculo(index);
                 index = -1;
+                btnExcluirVcl.setDisable(true);
                 LimparCampos();
                 carregarLista();
-                btnExcluirVcl.setDisable(true);
             }
         });
     }
-
-    /*public void carregarLista() {
-        try {
-            tblVcl.getItems().remove(0, tblVcl.getItems().size());
-            java.util.List<Veiculo> veiculoList = ServiceVeiculo.carregarVeiculo();
-
-            for (Veiculo veiculo : veiculoList) {
-                int idModelos = veiculo.getIdModelos();
-                Modelos modelo = ServiceVeiculo.buscarIdModelo(idModelos);
-                if (modelo != null) {
-                    veiculo.setNomeModelo(modelo.getNome());
-                } else {
-                    modelo.setNomeMarca("");
-                }
-            }
-
-            List<Modelos> modelo = ServiceModelo.carregarModelos();
-            modeloVcl.setItems(FXCollections.observableArrayList(modelo));
-
-            modeloVcl.setConverter(new StringConverter<Modelos>() {
-                @Override
-                public String toString(Modelos modelo) {
-                    return modelo.getNome();
-                }
-
-                @Override
-                public Modelos fromString(String string) {
-                    return null;
-                }
-            });
-
-            tblVcl.getItems().addAll(veiculoList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public void carregarLista() {
         try {
