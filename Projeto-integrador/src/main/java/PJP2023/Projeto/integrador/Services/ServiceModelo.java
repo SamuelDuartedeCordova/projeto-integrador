@@ -3,6 +3,7 @@ package PJP2023.Projeto.integrador.Services;
 import PJP2023.Projeto.integrador.Controller.ModeloController;
 import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Modelos;
+import PJP2023.Projeto.integrador.Models.VeiculoInfo;
 import PJP2023.Projeto.integrador.database.ConexaoDatabase;
 
 import java.sql.*;
@@ -148,6 +149,35 @@ public class ServiceModelo {
                 .filter(modelos -> modelos.getId() == id)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static List<VeiculoInfo> carregarInformacoesVeiculos() {
+        List<VeiculoInfo> veiculoInfoList = new ArrayList<>();
+
+        try {
+            Connection conn = conexao.getConexao();
+            Statement sta = conn.createStatement();
+            ResultSet rs = sta.executeQuery("SELECT m.nome_do_fabricante, mo.nome, v.ano_fabricacao, v.placa, v.renavam, v.chassi " +
+                    "FROM veiculos v " +
+                    "INNER JOIN modelos mo ON v.id_modelos = mo.id " +
+                    "INNER JOIN marcas m ON mo.id_marcas = m.id;");
+
+            while (rs.next()) {
+                VeiculoInfo veiculoInfo = new VeiculoInfo();
+                veiculoInfo.setClnModelo(rs.getString("nome"));
+                veiculoInfo.setClnMarca(rs.getString("nome_do_fabricante"));
+                veiculoInfo.setClnFabricacao(rs.getInt("ano_fabricacao"));
+                veiculoInfo.setClnPlaca(rs.getString("placa"));
+                veiculoInfo.setClnRenavam(rs.getLong("renavam"));
+                veiculoInfo.setClnChassi(rs.getString("chassi"));
+
+                veiculoInfoList.add(veiculoInfo);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return veiculoInfoList;
     }
 
 }

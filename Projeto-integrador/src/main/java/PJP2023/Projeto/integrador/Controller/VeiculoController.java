@@ -187,6 +187,7 @@ public class VeiculoController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ServiceVeiculo.salvarVeiculo(vei);
+
                     stage.close();
                 }
             });

@@ -1,83 +1,59 @@
 package PJP2023.Projeto.integrador.Controller;
+import PJP2023.Projeto.integrador.Models.Veiculo;
+import PJP2023.Projeto.integrador.Models.VeiculoInfo;
+import PJP2023.Projeto.integrador.Services.ServiceModelo;
+import PJP2023.Projeto.integrador.database.ConexaoDatabase;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.w3c.dom.Node;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Controller {
     @FXML
-    private TextField ano1;
+    private TableView<VeiculoInfo> tblCarros;
     @FXML
-    private TextField anoFabricacao;
+    private TableColumn<VeiculoInfo, String> clnModelo;
     @FXML
-    private Button btnExcluirMarca;
+    private TableColumn<VeiculoInfo, String> clnMarca;
     @FXML
-    private Button btnExcluirModelo;
+    private TableColumn<VeiculoInfo, Integer> clnFabricacao;
     @FXML
-    private Button btnExcluirVeiculo;
+    private TableColumn<VeiculoInfo, String> clnPlaca;
     @FXML
-    private Button btnSalvarMarca;
+    private TableColumn<VeiculoInfo, Long> clnRenavam;
     @FXML
-    private Button btnSalvarModelo;
+    private TableColumn<VeiculoInfo, String> clnChassi;
+
     @FXML
-    private Button btnSalvarVeiculo;
-    @FXML
-    private TextField cambio;
-    @FXML
-    private TextField carroceria;
-    @FXML
-    private Label chassi;
-    @FXML
-    private TextField cilindrada;
-    @FXML
-    private TableColumn<?, ?> coliunaCombustivel;
-    @FXML
-    private TableColumn<?, ?> colunaAno;
-    @FXML
-    private TableColumn<?, ?> colunaCambio;
-    @FXML
-    private TableColumn<?, ?> colunaCarroceria;
-    @FXML
-    private TableColumn<?, ?> colunaChassi;
-    @FXML
-    private TableColumn<?, ?> colunaCilindrada;
-    @FXML
-    private TableColumn<?, ?> colunaCor;
-    @FXML
-    private TableColumn<?, ?> colunaNome;
-    @FXML
-    private TableColumn<?, ?> colunaPlaca;
-    @FXML
-    private TableColumn<?, ?> colunaPortas;
-    @FXML
-    private TableColumn<?, ?> colunaPotencia;
-    @FXML
-    private TableColumn<?, ?> colunaRenavam;
-    @FXML
-    private TextField combustivel;
-    @FXML
-    private TextField cor;
-    @FXML
-    private TextField nome;
-    @FXML
-    private TextField nomeDoFabricante;
-    @FXML
-    private TextField placa;
-    @FXML
-    private TextField portas;
-    @FXML
-    private TextField potencia;
-    @FXML
-    private TextField renavam;
+    public void initialize() {
+        // Mapear os atributos do objeto VeiculoInfo para as colunas da TableView
+        clnModelo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClnModelo()));
+        clnMarca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClnMarca()));
+        clnFabricacao.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getClnFabricacao()).asObject());
+        clnPlaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClnPlaca()));
+        clnRenavam.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getClnRenavam()).asObject());
+        clnChassi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClnChassi()));
+
+        // Carregar as informações dos veículos do banco de dados e preencher a TableView
+        atualizarListaVeiculos();
+    }
     @FXML
     void CadastroMarca(ActionEvent event) {
         try {
@@ -123,11 +99,17 @@ public class Controller {
 
             VeiculoController veiculoController = loader.getController();
             veiculoController.setStage(stage);
+            stage.setOnHidden(e -> atualizarListaVeiculos());
 
             stage.show();
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void atualizarListaVeiculos() {
+        List<VeiculoInfo> veiculoInfoList = ServiceModelo.carregarInformacoesVeiculos();
+        tblCarros.setItems(FXCollections.observableArrayList(veiculoInfoList));
     }
 }
 
