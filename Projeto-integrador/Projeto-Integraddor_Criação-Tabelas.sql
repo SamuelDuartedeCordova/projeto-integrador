@@ -3,17 +3,20 @@ ID SERIAL NOT NULL PRIMARY KEY,
 nome_do_fabricante VARCHAR(150) NOT NULL
 );
 
+C
 CREATE TABLE modelos(
 ID SERIAL NOT NULL PRIMARY KEY,
 nome VARCHAR(50) NOT NULL,
 cambio VARCHAR(20) NULL,
 combustivel VARCHAR(50) NULL,
 potencia INTEGER NULL,
-carroceria VARCHAR(50), 
+carroceria VARCHAR(50),
 portas INTEGER NULL,
 cor VARCHAR(20) NULL,
 id_marcas integer NOT NULL,
 FOREIGN KEY (id_marcas) REFERENCES marcas(id)
+ON UPDATE CASCADE
+ON DELETE CASCADE
 );
 
 CREATE TABLE veiculos(
