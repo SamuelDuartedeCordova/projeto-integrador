@@ -4,6 +4,8 @@ import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Veiculo;
 import PJP2023.Projeto.integrador.database.ConexaoDatabase;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,40 +24,34 @@ public class ServiceVeiculo {
         while (resultSet.next()) {
             Veiculo veiculo = new Veiculo();
             veiculo.setId(Integer.valueOf(String.valueOf(resultSet.getInt(1))));
-            veiculo.setRenavam(resultSet.getInt(2));
-            veiculo.setAnoFabricacao(resultSet.getDate(3));
-            veiculo.setIdModelos(resultSet.getInt(4));
-            veiculo.setPlaca(resultSet.getString(5));
-            veiculo.setChassi(resultSet.getString(6));
-
+            String renavamStr = resultSet.getString(2);
+            veiculo.setRenavam(new BigInteger(renavamStr));
+            veiculo.setPlaca(resultSet.getString(3));
+            veiculo.setAnoFabricacao(resultSet.getInt(4));
+            veiculo.setChassi(resultSet.getString(5));
+            veiculo.setIdModelos(resultSet.getInt(6));
             out.add(veiculo);
         }
-
         return out;
     }
 
+
+
     public static void salvarVeiculo(Veiculo veiculo) {
         try {
-
             Connection conn = conexaoDatabase.getConexao();
-
-            String insertSql = "insert into veiculos (id, renavam, placa, ano_Fabricacao, chassi, id_modelo) values (?,?,?,?,?,?))";
-
+            String insertSql = "insert into veiculos (renavam, placa, ano_Fabricacao, chassi, id_modelos) values (?,?,?,?,?)";
             PreparedStatement pre = conn.prepareStatement(insertSql);
 
-            pre.setInt(1, veiculo.getId());
-            pre.setInt(2, veiculo.getRenavam());
-            pre.setString(3, veiculo.getPlaca());
-
-            pre.setDate(4, (Date) veiculo.getAnoFabricacao());
-            pre.setString(5, veiculo.getChassi());
-            pre.setInt(6, veiculo.getIdModelos());
-
+            pre.setBigDecimal(1, new BigDecimal(veiculo.getRenavam()));
+            pre.setString(2, veiculo.getPlaca());
+            pre.setInt(3, veiculo.getAnoFabricacao());
+            pre.setString(4, veiculo.getChassi());
+            pre.setInt(5, veiculo.getIdModelos());
             pre.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static boolean deletarVeiculo(int idModelo) {
@@ -71,7 +67,6 @@ public class ServiceVeiculo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -79,17 +74,16 @@ public class ServiceVeiculo {
         try {
             Connection conn = conexaoDatabase.getConexao();
 
-            String updateSql = "update veiculos set id = ?, renavam = ?, placa = ?, ano_Fabricacao = ?, chassi = ?  where id_modelo = ?";
+            String updateSql = "update veiculos set id_modelos = ?, renavam = ?, placa = ?, ano_Fabricacao = ?, chassi = ?  where id = ?";
 
             PreparedStatement pre = conn.prepareStatement(updateSql);
 
-            pre.setInt(1, veiculo.getId());
-            pre.setInt(2, veiculo.getRenavam());
+            pre.setInt(1, veiculo.getIdModelos());
+            pre.setBigDecimal(2, new BigDecimal(veiculo.getRenavam()));
             pre.setString(3, veiculo.getPlaca());
-            pre.setDate(4, (Date) veiculo.getAnoFabricacao());
+            pre.setInt(4, veiculo.getAnoFabricacao());
             pre.setString(5, veiculo.getChassi());
-            pre.setInt(6, veiculo.getIdModelos());
-            pre.setInt(7, index2);
+            pre.setInt(6, index2);
 
             return pre.execute();
         } catch (Exception e){
