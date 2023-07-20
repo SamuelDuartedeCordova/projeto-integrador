@@ -10,6 +10,15 @@ public class Veiculo {
     private Integer idModelos;
     private String placa;
     private String chassi;
+    private String nomeModelo;
+
+    public String getNomeModelo() {
+        return nomeModelo;
+    }
+
+    public void setNomeModelo(String nomeModelo) {
+        this.nomeModelo = nomeModelo;
+    }
 
     public Veiculo(Integer id, Integer renavam, Date anoFabricacao, Integer idModelos, String placa, String chassi) {
         this.id = id;

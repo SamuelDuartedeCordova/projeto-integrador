@@ -1,10 +1,12 @@
 package PJP2023.Projeto.integrador.Services;
 
+import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Veiculo;
 import PJP2023.Projeto.integrador.database.ConexaoDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ServiceVeiculo {
@@ -44,6 +46,7 @@ public class ServiceVeiculo {
             pre.setInt(1, veiculo.getId());
             pre.setInt(2, veiculo.getRenavam());
             pre.setString(3, veiculo.getPlaca());
+
             pre.setDate(4, (Date) veiculo.getAnoFabricacao());
             pre.setString(5, veiculo.getChassi());
             pre.setInt(6, veiculo.getIdModelos());
@@ -92,9 +95,26 @@ public class ServiceVeiculo {
         } catch (Exception e){
             e.printStackTrace();
         }
-
         return false;
+    }
 
+    public static int buscarIdModelo(String marca) {
+        try {
+            Connection conn = conexaoDatabase.getConexao();
+
+            String selectSql = "select id from modelos where nome = '" + marca + "'";
+
+            Statement sta = conn.createStatement();
+            ResultSet rs = sta.executeQuery(selectSql);
+
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return -1; // Retorna -1 se a marca não for encontrada
     }
 
 }
