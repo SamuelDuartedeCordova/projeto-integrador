@@ -85,7 +85,7 @@ public class ModeloController {
         portasMdl.setItems(opcoesPortas);
         combustivelMdl.setItems(opcoesCombustivel);
         cambioMdl.setItems(opcoesCambio);
-        this.carregarLista();git
+        this.carregarLista();
 
         // Configurar o evento de clique duplo na tabela
         tblModelos.setOnMouseClicked(new EventHandler<MouseEvent>() {
