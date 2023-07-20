@@ -63,6 +63,7 @@ public class MainController {
                             if (marca.getId() == mod.getIdMarcas()) {
                                 clnModelo.setValue(marca);
                                 break;
+
                             }
                         }
                     }
