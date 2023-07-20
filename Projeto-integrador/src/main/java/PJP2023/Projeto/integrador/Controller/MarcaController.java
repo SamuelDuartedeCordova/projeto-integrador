@@ -86,18 +86,26 @@ public class MarcaController {
     }
     @FXML
     void ExcluirMarca(ActionEvent event) {
-        Alert alertaExcluir = new Alert(Alert.AlertType.CONFIRMATION);
-        alertaExcluir.setTitle("Confirmaçao de Exclusão");
-        alertaExcluir.setHeaderText("Deseja Excluir o registro ?");
+
+        Alert alertaExcluir = new Alert(Alert.AlertType.WARNING);
+        alertaExcluir.setTitle("ATENÇÃO!");
+        alertaExcluir.setHeaderText("Ao excluir uma marca, todos os modelos dela serão excluidos também ! Deseja realmente fazer a exclusão?");
         alertaExcluir.showAndWait().ifPresent(resposta -> {
             if (resposta == ButtonType.OK) {
-                ServiceMarca.deletarMarcas(index);
-                index = -1;
-                LimparCampos();
-                index = -1;
-                carregarLista();
-                btnExcluirMarca.setDisable(true);
+                try {
+                    ServiceMarca.deletarMarcas(index);
+                    index = -1;
+                    LimparCampos();
+                    index = -1;
+                    carregarLista();
+                    btnExcluirMarca.setDisable(true);
+                }catch (Exception e){
+                    System.out.println("erro no excluir");
+                } finally {
+                    System.out.println("Try catch finalizado");
+                }
             }
+
         });
     }
     //Recebe parametros da janela marcas
