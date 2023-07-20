@@ -70,12 +70,14 @@ public class ModeloController {
     @FXML
     void initialize() {
         btnExcluirMdl.setDisable(true);
+
         //Colunas da TableView
         clnMarcaMdl.setCellValueFactory(new PropertyValueFactory<>("nomeMarca"));
         clnNomeMdl.setCellValueFactory(new PropertyValueFactory<>("nome"));
         clnCarroceriaMdl.setCellValueFactory(new PropertyValueFactory<>("carroceria"));
         clnCorMdl.setCellValueFactory(new PropertyValueFactory<>("cor"));
         clnPotenciaMdl.setCellValueFactory(new PropertyValueFactory<>("potencia"));
+
         //Itens Fixos ChoiseBox
         ObservableList<String> opcoesCambio = FXCollections.observableArrayList("", "Automático","Manual");
         ObservableList<String> opcoesCombustivel = FXCollections.observableArrayList("", "Gasolina","Etanol","Diesel","Flex");
@@ -111,7 +113,6 @@ public class ModeloController {
                     carroceriaMdl.setValue(mod.getCarroceria());
                     index = mod.getId();
                     btnExcluirMdl.setDisable(false);
-                    System.out.println(marcaMdl.getValue());
                 }
             }
         });
@@ -239,7 +240,7 @@ public class ModeloController {
             }
         });
     }
-    //Recebe parametros da janela marcas
+    //Recebe parametros da janela
     public void setStage(Stage stage) {
         this.stage = stage;
     }

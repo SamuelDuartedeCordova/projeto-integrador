@@ -141,4 +141,13 @@ public class ServiceModelo {
         return -1; // Retorna -1 se a marca não for encontrada
     }
 
+    public static Modelos carregarModeloId(int id) {
+        // Supondo que você tenha uma lista de todas as marcas chamada "marcasList"
+        // e o método getId() na classe Marcas para obter o ID.
+        return carregarModelos().stream()
+                .filter(modelos -> modelos.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
 }
