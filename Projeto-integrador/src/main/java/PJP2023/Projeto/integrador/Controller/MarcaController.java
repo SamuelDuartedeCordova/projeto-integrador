@@ -58,6 +58,8 @@ public class MarcaController {
                     if (resposta == ButtonType.OK) {
                         //Adicionar novo item a Lista
                         MarcaService.inserirMarcas(mar);
+                        limparCampos();
+                        carregarLista();
 
                     }
                 });
@@ -77,7 +79,7 @@ public class MarcaController {
                 });
             }
         }else{
-            campoMarca.setStyle("-fx-background-color: pink;");
+            campoMarca.setStyle("-fx-background-color: red;");
         }
     }
     @FXML

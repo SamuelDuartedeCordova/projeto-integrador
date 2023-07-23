@@ -103,20 +103,20 @@ public class VeiculoController {
             vei.setPlaca(placaVcl.getText().toUpperCase());
             placaVcl.setStyle("-fx-background-color: white;");
         } else if (campoVazio(placaVcl.getText())) {
-            placaVcl.setStyle("-fx-background-color: pink;");
+            placaVcl.setStyle("-fx-background-color: red;");
             c++;
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Placa Invalida");
             alert.setHeaderText("Placa Informado Invalida, Digite uma placa Valida.");
             alert.showAndWait();
-            placaVcl.setStyle("-fx-background-color: pink;");
+            placaVcl.setStyle("-fx-background-color: red;");
             c++;
         }
 
         //Verificar Ano
         if (campoVazio(anoVcl.getText())) {
-            anoVcl.setStyle("-fx-background-color: pink;");
+            anoVcl.setStyle("-fx-background-color: red;");
             c++;
         } else if (anoValido(anoVcl.getText())){
             vei.setAnoFabricacao(Integer.parseInt(anoVcl.getText()));
@@ -126,13 +126,13 @@ public class VeiculoController {
             alert.setTitle("Ano Invalido");
             alert.setHeaderText("Ano de fabricação Informado Invalida, Digite um ano Valido.");
             alert.showAndWait();
-            anoVcl.setStyle("-fx-background-color: pink;");
+            anoVcl.setStyle("-fx-background-color: red;");
             c++;
         }
 
         //Verificar renavam
         if(campoVazio(renavamVcl.getText())){
-            renavamVcl.setStyle("-fx-background-color: pink;");
+            renavamVcl.setStyle("-fx-background-color: red;");
             c++;
         }else if(apenasNumeros(renavamVcl.getText()) && (renavamVcl.getText().length() == 11)){
             BigInteger renavam = new BigInteger(renavamVcl.getText());
@@ -143,13 +143,13 @@ public class VeiculoController {
             alert.setTitle("Renavam Invalido");
             alert.setHeaderText("Renavam Informado Invalida, Digite um Renavam Valido.");
             alert.showAndWait();
-            renavamVcl.setStyle("-fx-background-color: pink;");
+            renavamVcl.setStyle("-fx-background-color: red;");
             c++;
         }
 
         //Verificar Chassi
         if(campoVazio(chassiVcl.getText())){
-            chassiVcl.setStyle("-fx-background-color: pink;");
+            chassiVcl.setStyle("-fx-background-color: red;");
             c++;
         }else if(chassiVcl.getText().length() == 17 && chassiVcl.getText().matches("^[A-HJ-NPR-Z0-9]*$")){
             vei.setChassi(chassiVcl.getText());
@@ -159,7 +159,7 @@ public class VeiculoController {
             alert.setTitle("Chassi Invalido");
             alert.setHeaderText("Chassi Informado Invalida, Digite um Chassi Valido.");
             alert.showAndWait();
-            chassiVcl.setStyle("-fx-background-color: pink;");
+            chassiVcl.setStyle("-fx-background-color: red;");
             c++;
         }
         //Verificar Cor
@@ -175,7 +175,7 @@ public class VeiculoController {
                 Modelos modelo = (Modelos) modeloVcl.getValue();
                 vei.setIdModelos(VeiculoService.buscarIdModelo(modelo.getNome()));
             } else {
-                modeloVcl.setStyle("-fx-background-color: pink;");
+                modeloVcl.setStyle("-fx-background-color: red;");
                 c++;
             }
         }catch (Exception e){

@@ -110,7 +110,7 @@ public class ModeloController {
         if(!campoVazio(nomeMdl.getText())){
             mod.setNome(nomeMdl.getText());
         }else{
-            nomeMdl.setStyle("-fx-background-color: pink;");
+            nomeMdl.setStyle("-fx-background-color: red;");
             c ++;
         }
 
@@ -123,7 +123,7 @@ public class ModeloController {
                 alert.setTitle("Potencia Invalida");
                 alert.setHeaderText("Potencia Informado Invalida, Digite apenas numeros.");
                 alert.showAndWait();
-                nomeMdl.setStyle("-fx-background-color: pink;");
+                nomeMdl.setStyle("-fx-background-color: red;");
                 c ++;
             }
         }catch (Exception e){
@@ -135,7 +135,7 @@ public class ModeloController {
             Marcas marca = (Marcas) marcaMdl.getValue();
             mod.setIdMarcas(ModeloService.buscarIdMarca(marca.getMarca()));
         } else {
-            marcaMdl.setStyle("-fx-background-color: pink;");
+            marcaMdl.setStyle("-fx-background-color: red;");
             c++;
         }
 
@@ -178,6 +178,7 @@ public class ModeloController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ModeloService.inserirModelos(mod);
+                    carregarLista();
 
                 }
             });

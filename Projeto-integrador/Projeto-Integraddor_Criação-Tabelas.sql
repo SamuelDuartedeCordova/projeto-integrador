@@ -27,4 +27,7 @@ chassi CHAR(17) NOT NULL UNIQUE,
 cor VARCHAR(20) NULL,
 id_modelos integer NOT NULL,
 FOREIGN KEY (id_modelos) REFERENCES modelos(id)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+
 );
