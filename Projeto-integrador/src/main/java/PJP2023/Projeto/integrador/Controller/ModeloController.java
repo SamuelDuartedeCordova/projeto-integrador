@@ -110,7 +110,7 @@ public class ModeloController {
         if(!campoVazio(nomeMdl.getText())){
             mod.setNome(nomeMdl.getText());
         }else{
-            nomeMdl.setStyle("-fx-background-color: red;");
+            nomeMdl.setStyle("-fx-background-color: pink;");
             c ++;
         }
 
@@ -123,8 +123,10 @@ public class ModeloController {
                 alert.setTitle("Potencia Invalida");
                 alert.setHeaderText("Potencia Informado Invalida, Digite apenas numeros.");
                 alert.showAndWait();
-                nomeMdl.setStyle("-fx-background-color: red;");
+                nomeMdl.setStyle("-fx-background-color: pink;");
                 c ++;
+            }else{
+                mod.setPotencia(0);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -178,7 +180,9 @@ public class ModeloController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ModeloService.inserirModelos(mod);
-                    carregarLista();
+                    this.carregarLista();
+                    this.limparCampos();
+
 
                 }
             });

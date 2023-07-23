@@ -108,7 +108,7 @@ public class VeiculoController {
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Placa Invalida");
-            alert.setHeaderText("Placa Informado Invalida, Digite uma placa Valida.");
+            alert.setHeaderText("Placa Informado Invalida, Digite uma placa Valida, com 3 letras e 4 números.");
             alert.showAndWait();
             placaVcl.setStyle("-fx-background-color: red;");
             c++;
@@ -191,7 +191,8 @@ public class VeiculoController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     VeiculoService.salvarVeiculo(vei);
-
+                    this.limparCampos();
+                    this.carregarLista();
                 }
             });
         }

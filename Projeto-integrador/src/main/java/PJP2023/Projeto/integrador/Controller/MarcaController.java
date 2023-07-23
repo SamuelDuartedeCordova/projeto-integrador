@@ -60,7 +60,6 @@ public class MarcaController {
                         MarcaService.inserirMarcas(mar);
                         limparCampos();
                         carregarLista();
-
                     }
                 });
             }else {
@@ -79,7 +78,7 @@ public class MarcaController {
                 });
             }
         }else{
-            campoMarca.setStyle("-fx-background-color: red;");
+            campoMarca.setStyle("-fx-background-color: pink;");
         }
     }
     @FXML
