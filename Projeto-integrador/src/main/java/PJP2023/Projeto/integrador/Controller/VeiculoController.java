@@ -1,11 +1,9 @@
 package PJP2023.Projeto.integrador.Controller;
 
-import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Modelos;
 import PJP2023.Projeto.integrador.Models.Veiculo;
-import PJP2023.Projeto.integrador.Services.ServiceMarca;
-import PJP2023.Projeto.integrador.Services.ServiceModelo;
-import PJP2023.Projeto.integrador.Services.ServiceVeiculo;
+import PJP2023.Projeto.integrador.Services.ModeloService;
+import PJP2023.Projeto.integrador.Services.VeiculoService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,11 +16,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
-import java.awt.*;
+
 import java.math.BigInteger;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class VeiculoController {
@@ -97,7 +93,7 @@ public class VeiculoController {
 
 
     @FXML
-    void SalvarVeiculo(ActionEvent event) throws ParseException {
+    void salvarVeiculo(ActionEvent event) throws ParseException {
 
         Veiculo vei = new Veiculo();
         c = 0;
@@ -177,7 +173,7 @@ public class VeiculoController {
         try{
             if (modeloVcl != null) {
                 Modelos modelo = (Modelos) modeloVcl.getValue();
-                vei.setIdModelos(ServiceVeiculo.buscarIdModelo(modelo.getNome()));
+                vei.setIdModelos(VeiculoService.buscarIdModelo(modelo.getNome()));
             } else {
                 modeloVcl.setStyle("-fx-background-color: pink;");
                 c++;
@@ -194,7 +190,7 @@ public class VeiculoController {
             alertaSalvar.showAndWait().ifPresent(resposta -> {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
-                    ServiceVeiculo.salvarVeiculo(vei);
+                    VeiculoService.salvarVeiculo(vei);
 
                 }
             });
@@ -207,10 +203,10 @@ public class VeiculoController {
             alertaSalvar.setHeaderText("Deseja Alterar o registro ?");
             alertaSalvar.showAndWait().ifPresent(resposta -> {
                 if (resposta == ButtonType.OK) {
-                    ServiceVeiculo.atualizarVeiculo(index, vei);
+                    VeiculoService.atualizarVeiculo(index, vei);
                     index = -1;
                     btnExcluirVcl.setDisable(true);
-                    this.LimparCampos();
+                    this.limparCampos();
                     this.carregarLista();
                 }
             });
@@ -218,21 +214,21 @@ public class VeiculoController {
     }
 
     @FXML
-    void CancelarVeiculo(ActionEvent event) {
+    void cancelarVeiculo(ActionEvent event) {
         stage.close();
     }
 
     @FXML
-    void ExcluirVeiculo(ActionEvent event) {
+    void excluirVeiculo(ActionEvent event) {
         Alert alertaExcluir = new Alert(Alert.AlertType.CONFIRMATION);
         alertaExcluir.setTitle("Confirmaçao de Exclusão");
         alertaExcluir.setHeaderText("Deseja Excluir o registro ?");
         alertaExcluir.showAndWait().ifPresent(resposta -> {
             if (resposta == ButtonType.OK) {
-                ServiceVeiculo.deletarVeiculo(index);
+                VeiculoService.deletarVeiculo(index);
                 index = -1;
                 btnExcluirVcl.setDisable(true);
-                LimparCampos();
+                limparCampos();
                 carregarLista();
             }
         });
@@ -244,11 +240,11 @@ public class VeiculoController {
             tblVcl.getItems().clear();
 
             // Carrega a lista de veículos do banco de dados
-            java.util.List<Veiculo> veiculoList = ServiceVeiculo.carregarVeiculo();
+            java.util.List<Veiculo> veiculoList = VeiculoService.carregarVeiculo();
 
             for (Veiculo veiculo : veiculoList) {
                 int idModelo = veiculo.getIdModelos();
-                Modelos modelo = ServiceModelo.carregarModeloId(idModelo);
+                Modelos modelo = ModeloService.carregarModeloId(idModelo);
 
                 if (modelo != null) {
                     veiculo.setNomeModelo(modelo.getNome());
@@ -258,7 +254,7 @@ public class VeiculoController {
             }
 
             // Carrega a lista de modelos do banco de dados
-            List<Modelos> modelosList = ServiceModelo.carregarModelos();
+            List<Modelos> modelosList = ModeloService.carregarModelos();
             ObservableList<Modelos> modelosObservableList = FXCollections.observableArrayList(modelosList);
 
             // Configura o ChoiceBox de modelos
@@ -297,7 +293,7 @@ public class VeiculoController {
         }
     }
 
-    public void LimparCampos() {
+    public void limparCampos() {
         placaVcl.setText("");
         anoVcl.setText("");
         renavamVcl.setText("");

@@ -1,7 +1,5 @@
 package PJP2023.Projeto.integrador.Services;
 
-import PJP2023.Projeto.integrador.Controller.ModeloController;
-import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Modelos;
 import PJP2023.Projeto.integrador.Models.VeiculoInfo;
 import PJP2023.Projeto.integrador.database.ConexaoDatabase;
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ServiceModelo {
+public class ModeloService {
     private static ConexaoDatabase conexao = new ConexaoDatabase();
     public static List<Modelos> carregarModelos(){
         List<Modelos> out = new ArrayList<>();

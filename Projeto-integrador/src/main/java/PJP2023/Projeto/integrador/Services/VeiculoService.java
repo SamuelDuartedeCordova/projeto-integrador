@@ -1,6 +1,5 @@
 package PJP2023.Projeto.integrador.Services;
 
-import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Veiculo;
 import PJP2023.Projeto.integrador.database.ConexaoDatabase;
 
@@ -8,10 +7,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-public class ServiceVeiculo {
+public class VeiculoService {
 
     private static ConexaoDatabase conexaoDatabase = new ConexaoDatabase();
 

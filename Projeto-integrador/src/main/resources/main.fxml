@@ -4,16 +4,15 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PJP2023.Projeto.integrador.Controller.Controller">
    <children>
       <MenuBar fx:id="mnCadastro">
         <menus>
           <Menu mnemonicParsing="false" text="Novo Cadastro">
             <items>
-              <MenuItem fx:id="mniMarca" mnemonicParsing="false" onAction="#CadastroMarca" text="Marca" />
-                  <MenuItem fx:id="mniModelo" mnemonicParsing="false" onAction="#CadastroModelo" text="Modelo" />
-                  <MenuItem fx:id="mniVeiculo" mnemonicParsing="false" onAction="#CadastroVeiculo" text="Veiculo" />
+              <MenuItem fx:id="mniMarca" mnemonicParsing="false" onAction="#cadastroMarca" text="Marca" />
+                  <MenuItem fx:id="mniModelo" mnemonicParsing="false" onAction="#cadastroModelo" text="Modelo" />
+                  <MenuItem fx:id="mniVeiculo" mnemonicParsing="false" onAction="#cadastroVeiculo" text="Veiculo" />
             </items>
           </Menu>
         </menus>

@@ -2,10 +2,8 @@ package PJP2023.Projeto.integrador.Controller;
 
 import PJP2023.Projeto.integrador.Models.Marcas;
 import PJP2023.Projeto.integrador.Models.Modelos;
-import PJP2023.Projeto.integrador.Services.ServiceMarca;
-import PJP2023.Projeto.integrador.Services.ServiceModelo;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
+import PJP2023.Projeto.integrador.Services.MarcaService;
+import PJP2023.Projeto.integrador.Services.ModeloService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,11 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.stage.Window;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-import java.util.List;
 import java.util.List;
 
 public class ModeloController {
@@ -108,7 +102,7 @@ public class ModeloController {
     }
 
     @FXML
-    public void SalvarModelo() {
+    public void salvarModelo() {
         Modelos mod = new Modelos();
         c = 0;
 
@@ -139,7 +133,7 @@ public class ModeloController {
         //Verificar Marca
         if (marcaMdl != null) {
             Marcas marca = (Marcas) marcaMdl.getValue();
-            mod.setIdMarcas(ServiceModelo.buscarIdMarca(marca.getMarca()));
+            mod.setIdMarcas(ModeloService.buscarIdMarca(marca.getMarca()));
         } else {
             marcaMdl.setStyle("-fx-background-color: pink;");
             c++;
@@ -183,7 +177,7 @@ public class ModeloController {
             alertaSalvar.showAndWait().ifPresent(resposta -> {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
-                    ServiceModelo.inserirModelos(mod);
+                    ModeloService.inserirModelos(mod);
 
                 }
             });
@@ -196,9 +190,9 @@ public class ModeloController {
             alertaSalvar.setHeaderText("Deseja Alterar o registro ?");
             alertaSalvar.showAndWait().ifPresent(resposta -> {
                 if (resposta == ButtonType.OK) {
-                    ServiceModelo.atualizarModelos(index, mod);
+                    ModeloService.atualizarModelos(index, mod);
                     this.carregarLista();
-                    this.LimparCampos();
+                    this.limparCampos();
                     index = -1;
                 }
             });
@@ -206,20 +200,20 @@ public class ModeloController {
     }
 
     @FXML
-    void CancelarModelo(ActionEvent event) {
+    void cancelarModelo(ActionEvent event) {
         stage.close();
     }
 
     @FXML
-    void ExcluirModelo(ActionEvent event) {
+    void excluirModelo(ActionEvent event) {
         Alert alertaExcluir = new Alert(Alert.AlertType.CONFIRMATION);
         alertaExcluir.setTitle("Confirmaçao de Exclusão");
         alertaExcluir.setHeaderText("Deseja Excluir o registro ?");
         alertaExcluir.showAndWait().ifPresent(resposta -> {
             if (resposta == ButtonType.OK) {
-                ServiceModelo.deletarModelos(index);
+                ModeloService.deletarModelos(index);
                 index = -1;
-                LimparCampos();
+                limparCampos();
                 carregarLista();
                 btnExcluirMdl.setDisable(true);
             }
@@ -234,11 +228,11 @@ public class ModeloController {
    public void carregarLista() {
        try {
            tblModelos.getItems().remove(0, tblModelos.getItems().size());
-           List<Modelos> modelosList = ServiceModelo.carregarModelos();
+           List<Modelos> modelosList = ModeloService.carregarModelos();
 
            for (Modelos modelo : modelosList) {
                int idMarca = modelo.getIdMarcas();
-               Marcas marca = ServiceMarca.carregarMarcaPorId(idMarca);
+               Marcas marca = MarcaService.carregarMarcaPorId(idMarca);
                if (marca != null) {
                    modelo.setNomeMarca(marca.getMarca());
                } else {
@@ -246,7 +240,7 @@ public class ModeloController {
                }
            }
 
-           List<Marcas> marcas = ServiceMarca.carregarMarcas();
+           List<Marcas> marcas = MarcaService.carregarMarcas();
            marcaMdl.setItems(FXCollections.observableArrayList(marcas));
 
            marcaMdl.setConverter(new StringConverter<Marcas>() {
@@ -276,7 +270,7 @@ public class ModeloController {
         }
     }
 
-    public void LimparCampos() {
+    public void limparCampos() {
         nomeMdl.setText("");
         potenciaMdl.setText("");
         marcaMdl.getSelectionModel().clearSelection();

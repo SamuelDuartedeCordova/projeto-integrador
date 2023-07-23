@@ -1,8 +1,6 @@
 package PJP2023.Projeto.integrador.Controller;
-import PJP2023.Projeto.integrador.Models.Veiculo;
 import PJP2023.Projeto.integrador.Models.VeiculoInfo;
-import PJP2023.Projeto.integrador.Services.ServiceModelo;
-import PJP2023.Projeto.integrador.database.ConexaoDatabase;
+import PJP2023.Projeto.integrador.Services.ModeloService;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,15 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Node;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,7 +47,7 @@ public class Controller {
     }
 
     @FXML
-    void CadastroMarca(ActionEvent event) {
+    void cadastroMarca(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cdtmarcas.fxml"));
             Parent root = loader.load();
@@ -74,7 +65,7 @@ public class Controller {
         }
     }
     @FXML
-    void CadastroModelo(ActionEvent event) {
+    void cadastroModelo(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cdtmodelos.fxml"));
             Parent root = loader.load();
@@ -92,7 +83,7 @@ public class Controller {
         }
     }
     @FXML
-    void CadastroVeiculo(ActionEvent event) {
+    void cadastroVeiculo(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cdtveiculos.fxml"));
             Parent root = loader.load();
@@ -111,7 +102,7 @@ public class Controller {
     }
 
     private void atualizarListaVeiculos() {
-        List<VeiculoInfo> veiculoInfoList = ServiceModelo.carregarInformacoesVeiculos();
+        List<VeiculoInfo> veiculoInfoList = ModeloService.carregarInformacoesVeiculos();
         tblCarros.setItems(FXCollections.observableArrayList(veiculoInfoList));
     }
 }

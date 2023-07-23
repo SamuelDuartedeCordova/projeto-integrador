@@ -23,9 +23,9 @@
             <Text layoutX="32.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portas: " />
             <ChoiceBox fx:id="portasMdl" layoutX="81.0" layoutY="161.0" prefHeight="31.0" prefWidth="67.0" />
             <ChoiceBox fx:id="carroceriaMdl" layoutX="81.0" layoutY="63.0" prefHeight="31.0" prefWidth="170.0" />
-            <Button fx:id="btnSalvarMdl" layoutX="46.0" layoutY="235.0" mnemonicParsing="false" onAction="#SalvarModelo" text="Salvar" />
-            <Button fx:id="btnCancelarMdl" layoutX="144.0" layoutY="235.0" mnemonicParsing="false" onAction="#CancelarModelo" text="Cancelar" />
-            <Button fx:id="btnExcluirMdl" layoutX="522.0" layoutY="236.0" mnemonicParsing="false" onAction="#ExcluirModelo" text="Excluir" />
+            <Button fx:id="btnSalvarMdl" layoutX="46.0" layoutY="235.0" mnemonicParsing="false" onAction="#salvarModelo" text="Salvar" />
+            <Button fx:id="btnCancelarMdl" layoutX="144.0" layoutY="235.0" mnemonicParsing="false" onAction="#cancelarModelo" text="Cancelar" />
+            <Button fx:id="btnExcluirMdl" layoutX="522.0" layoutY="236.0" mnemonicParsing="false" onAction="#excluirModelo" text="Excluir" />
          </children>
       </AnchorPane>
       <TableView fx:id="tblModelos" prefHeight="286.0" prefWidth="605.0">

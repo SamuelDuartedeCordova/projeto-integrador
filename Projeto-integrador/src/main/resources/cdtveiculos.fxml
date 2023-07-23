@@ -19,9 +19,9 @@
             <TextField fx:id="renavamVcl" layoutX="88.0" layoutY="57.0" />
             <TextField fx:id="chassiVcl" layoutX="352.0" layoutY="57.0" />
             <ChoiceBox fx:id="modeloVcl" layoutX="355.0" layoutY="114.0" prefHeight="31.0" prefWidth="187.0" />
-            <Button fx:id="btnSalvarVcl" layoutX="22.0" layoutY="155.0" mnemonicParsing="false" onAction="#SalvarVeiculo" text="Salvar" />
-            <Button fx:id="btnCancelarVcl" layoutX="117.0" layoutY="155.0" mnemonicParsing="false" onAction="#CancelarVeiculo" text="Cancelar" />
-            <Button fx:id="btnExcluirVcl" layoutX="507.0" layoutY="155.0" mnemonicParsing="false" onAction="#ExcluirVeiculo" text="Excluir" />
+            <Button fx:id="btnSalvarVcl" layoutX="22.0" layoutY="155.0" mnemonicParsing="false" onAction="#salvarVeiculo" text="Salvar" />
+            <Button fx:id="btnCancelarVcl" layoutX="117.0" layoutY="155.0" mnemonicParsing="false" onAction="#cancelarVeiculo" text="Cancelar" />
+            <Button fx:id="btnExcluirVcl" layoutX="507.0" layoutY="155.0" mnemonicParsing="false" onAction="#excluirVeiculo" text="Excluir" />
             <Text layoutX="25.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cor: " />
             <TextField fx:id="corVcl" layoutX="62.0" layoutY="109.0" />
          </children>

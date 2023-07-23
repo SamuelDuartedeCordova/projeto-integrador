@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceMarca {
+public class MarcaService {
 
     private static ConexaoDatabase conexao = new ConexaoDatabase();
 

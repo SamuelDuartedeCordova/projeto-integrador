@@ -1,7 +1,7 @@
 package PJP2023.Projeto.integrador.Controller;
 
 import PJP2023.Projeto.integrador.Models.Marcas;
-import PJP2023.Projeto.integrador.Services.ServiceMarca;
+import PJP2023.Projeto.integrador.Services.MarcaService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -46,7 +46,7 @@ public class MarcaController {
     }
 
     @FXML
-    void SalvarMarca(ActionEvent event) {
+    void salvarMarca(ActionEvent event) {
         mar.setMarca(campoMarca.getText());
         if(!campoVazio(mar.getMarca())){
             if (index == -1) {
@@ -57,7 +57,7 @@ public class MarcaController {
                 alertaSalvar.showAndWait().ifPresent(resposta -> {
                     if (resposta == ButtonType.OK) {
                         //Adicionar novo item a Lista
-                        ServiceMarca.inserirMarcas(mar);
+                        MarcaService.inserirMarcas(mar);
 
                     }
                 });
@@ -68,8 +68,8 @@ public class MarcaController {
                 alertaSalvar.showAndWait().ifPresent(resposta -> {
                     if (resposta == ButtonType.OK) {
                         //Atualiza item na lista
-                        ServiceMarca.atualizarMarcas(index, mar);
-                        LimparCampos();
+                        MarcaService.atualizarMarcas(index, mar);
+                        limparCampos();
                         index = -1;
                         carregarLista();
                         btnExcluirMarca.setDisable(true);
@@ -81,11 +81,11 @@ public class MarcaController {
         }
     }
     @FXML
-    void CancelarMarca(ActionEvent event) {
+    void cancelarMarca(ActionEvent event) {
         stage.close();
     }
     @FXML
-    void ExcluirMarca(ActionEvent event) {
+    void excluirMarca(ActionEvent event) {
 
         Alert alertaExcluir = new Alert(Alert.AlertType.WARNING);
         alertaExcluir.setTitle("ATENÇÃO!");
@@ -93,9 +93,8 @@ public class MarcaController {
         alertaExcluir.showAndWait().ifPresent(resposta -> {
             if (resposta == ButtonType.OK) {
                 try {
-                    ServiceMarca.deletarMarcas(index);
-                    index = -1;
-                    LimparCampos();
+                    MarcaService.deletarMarcas(index);
+                    limparCampos();
                     index = -1;
                     carregarLista();
                     btnExcluirMarca.setDisable(true);
@@ -116,7 +115,7 @@ public class MarcaController {
     public void carregarLista() {
         try {
             tblMarca.getItems().remove(0, tblMarca.getItems().size());
-            List<Marcas> marcasList = ServiceMarca.carregarMarcas();
+            List<Marcas> marcasList = MarcaService.carregarMarcas();
             tblMarca.getItems().addAll(marcasList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,7 +131,7 @@ public class MarcaController {
         }
     }
 
-    public void LimparCampos() {
+    public void limparCampos() {
         campoMarca.setText("");
         campoMarca.setStyle("-fx-background-color: white;");
 
