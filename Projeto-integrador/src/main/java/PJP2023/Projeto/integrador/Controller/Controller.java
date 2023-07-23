@@ -66,6 +66,7 @@ public class Controller {
 
             MarcaController marcaController = loader.getController();
             marcaController.setStage(stage);
+            stage.setOnHidden(e -> atualizarListaVeiculos());
 
             stage.show();
         }catch (Exception e){
@@ -83,6 +84,7 @@ public class Controller {
 
             ModeloController modeloController = loader.getController();
             modeloController.setStage(stage);
+            stage.setOnHidden(e -> atualizarListaVeiculos());
 
             stage.show();
         }catch (Exception e){

@@ -58,7 +58,7 @@ public class MarcaController {
                     if (resposta == ButtonType.OK) {
                         //Adicionar novo item a Lista
                         ServiceMarca.inserirMarcas(mar);
-                        stage.close();
+
                     }
                 });
             }else {

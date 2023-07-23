@@ -28,8 +28,6 @@ public class ModeloController {
     @FXML
     private TextField potenciaMdl;
     @FXML
-    private TextField corMdl;
-    @FXML
     private ChoiceBox marcaMdl;
     @FXML
     private ChoiceBox cambioMdl;
@@ -48,7 +46,7 @@ public class ModeloController {
     @FXML
     private TableColumn<Modelos, String> clnCarroceriaMdl;
     @FXML
-    private TableColumn<Modelos, String> clnCorMdl;
+    private TableColumn<Modelos, String> clnCambioMdl;
     @FXML
     private TableColumn<Modelos, String> clnPotenciaMdl;
     @FXML
@@ -67,7 +65,7 @@ public class ModeloController {
         clnMarcaMdl.setCellValueFactory(new PropertyValueFactory<>("nomeMarca"));
         clnNomeMdl.setCellValueFactory(new PropertyValueFactory<>("nome"));
         clnCarroceriaMdl.setCellValueFactory(new PropertyValueFactory<>("carroceria"));
-        clnCorMdl.setCellValueFactory(new PropertyValueFactory<>("cor"));
+        clnCambioMdl.setCellValueFactory(new PropertyValueFactory<>("cambio"));
         clnPotenciaMdl.setCellValueFactory(new PropertyValueFactory<>("potencia"));
 
         //Itens Fixos ChoiseBox
@@ -88,7 +86,6 @@ public class ModeloController {
                     Modelos mod = tblModelos.getSelectionModel().getSelectedItem();
                     nomeMdl.setText(mod.getNome());
                     potenciaMdl.setText(Integer.toString(mod.getPotencia()));
-                    corMdl.setText(mod.getCor());
                     for (Object item : marcaMdl.getItems()) {
                         if (item instanceof Marcas) {
                             Marcas marca = (Marcas) item;
@@ -176,12 +173,7 @@ public class ModeloController {
             e.printStackTrace();
         }
 
-        //Verificar Cor
-        try{
-            mod.setCor(corMdl.getText());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
 
         //Incluir Novo Registro
         if(index == -1 && c == 0){
@@ -192,7 +184,7 @@ public class ModeloController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ServiceModelo.inserirModelos(mod);
-                    stage.close();
+
                 }
             });
         }
@@ -287,7 +279,6 @@ public class ModeloController {
     public void LimparCampos() {
         nomeMdl.setText("");
         potenciaMdl.setText("");
-        corMdl.setText("");
         marcaMdl.getSelectionModel().clearSelection();
         cambioMdl.getSelectionModel().clearSelection();
         combustivelMdl.getSelectionModel().clearSelection();

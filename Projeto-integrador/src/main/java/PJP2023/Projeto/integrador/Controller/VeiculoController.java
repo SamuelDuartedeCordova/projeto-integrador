@@ -35,6 +35,8 @@ public class VeiculoController {
     @FXML
     private TextField chassiVcl;
     @FXML
+    private TextField corVcl;
+    @FXML
     private ChoiceBox modeloVcl;
     @FXML
     private TableView <Veiculo>tblVcl;
@@ -76,6 +78,7 @@ public class VeiculoController {
                     anoVcl.setText(String.valueOf(vei.getAnoFabricacao()));
                     renavamVcl.setText(String.valueOf(vei.getRenavam()));
                     chassiVcl.setText(vei.getChassi());
+                    corVcl.setText(vei.getCor());
                     for (Object item : modeloVcl.getItems()) {
                         if (item instanceof Modelos) {
                             Modelos modelo = (Modelos) item;
@@ -163,6 +166,12 @@ public class VeiculoController {
             chassiVcl.setStyle("-fx-background-color: pink;");
             c++;
         }
+        //Verificar Cor
+        try{
+            vei.setCor(corVcl.getText());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         //Verificar Modelo
         try{
@@ -186,7 +195,7 @@ public class VeiculoController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ServiceVeiculo.salvarVeiculo(vei);
-                    stage.close();
+
                 }
             });
         }
@@ -293,6 +302,7 @@ public class VeiculoController {
         anoVcl.setText("");
         renavamVcl.setText("");
         chassiVcl.setText("");
+        corVcl.setText("");
         modeloVcl.getSelectionModel().clearSelection();
         placaVcl.setStyle("-fx-background-color: white;");
         anoVcl.setStyle("-fx-background-color: white;");
@@ -379,15 +389,6 @@ public class VeiculoController {
 
         // Verificar se o ano é maior que 0
         return ano > 0;
-    }
-
-    public static Date converterAno(String anoString) throws ParseException {
-        // Define o padrão da data esperado na String (apenas o ano)
-        String pattern = "yyyy";
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-
-        // Converte a String para um objeto Date
-        return sdf.parse(anoString);
     }
 
 }

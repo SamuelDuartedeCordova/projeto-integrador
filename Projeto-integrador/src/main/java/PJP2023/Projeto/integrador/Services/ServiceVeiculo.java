@@ -30,6 +30,7 @@ public class ServiceVeiculo {
             veiculo.setAnoFabricacao(resultSet.getInt(4));
             veiculo.setChassi(resultSet.getString(5));
             veiculo.setIdModelos(resultSet.getInt(6));
+            veiculo.setCor(resultSet.getString(7));
             out.add(veiculo);
         }
         return out;
@@ -38,7 +39,7 @@ public class ServiceVeiculo {
     public static void salvarVeiculo(Veiculo veiculo) {
         try {
             Connection conn = conexaoDatabase.getConexao();
-            String insertSql = "insert into veiculos (renavam, placa, ano_Fabricacao, chassi, id_modelos) values (?,?,?,?,?)";
+            String insertSql = "insert into veiculos (renavam, placa, ano_Fabricacao, chassi, id_modelos, cor) values (?,?,?,?,?,?)";
             PreparedStatement pre = conn.prepareStatement(insertSql);
 
             pre.setBigDecimal(1, new BigDecimal(veiculo.getRenavam()));
@@ -46,6 +47,7 @@ public class ServiceVeiculo {
             pre.setInt(3, veiculo.getAnoFabricacao());
             pre.setString(4, veiculo.getChassi());
             pre.setInt(5, veiculo.getIdModelos());
+            pre.setString(6, veiculo.getCor());
             pre.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +74,7 @@ public class ServiceVeiculo {
         try {
             Connection conn = conexaoDatabase.getConexao();
 
-            String updateSql = "update veiculos set id_modelos = ?, renavam = ?, placa = ?, ano_Fabricacao = ?, chassi = ?  where id = ?";
+            String updateSql = "update veiculos set id_modelos = ?, renavam = ?, placa = ?, ano_Fabricacao = ?, chassi = ?, cor = ?  where id = ?";
 
             PreparedStatement pre = conn.prepareStatement(updateSql);
 
@@ -81,7 +83,8 @@ public class ServiceVeiculo {
             pre.setString(3, veiculo.getPlaca());
             pre.setInt(4, veiculo.getAnoFabricacao());
             pre.setString(5, veiculo.getChassi());
-            pre.setInt(6, index2);
+            pre.setString(6, veiculo.getCor());
+            pre.setInt(7, index2);
 
             return pre.execute();
         } catch (Exception e){

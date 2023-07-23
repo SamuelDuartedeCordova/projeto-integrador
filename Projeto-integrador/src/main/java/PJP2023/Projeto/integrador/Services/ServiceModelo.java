@@ -33,8 +33,7 @@ public class ServiceModelo {
                 modelos.setPotencia(rs.getInt(5));
                 modelos.setCarroceria(rs.getString(6));
                 modelos.setPortas(rs.getInt(7));
-                modelos.setCor(rs.getString(8));
-                modelos.setIdMarcas(rs.getInt(9));
+                modelos.setIdMarcas(rs.getInt(8));
 
                 out.add(modelos);
             }
@@ -49,7 +48,7 @@ public class ServiceModelo {
         try {
             Connection conn = conexao.getConexao();
 
-            String sqlInsert = "insert into public.modelos (nome, cambio, combustivel, potencia, carroceria, portas, cor, id_marcas) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsert = "insert into public.modelos (nome, cambio, combustivel, potencia, carroceria, portas, id_marcas) values (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pre = conn.prepareStatement(sqlInsert);
             pre.setString(1, modelos.getNome());
@@ -58,8 +57,7 @@ public class ServiceModelo {
             pre.setInt(4, modelos.getPotencia());
             pre.setString(5, modelos.getCarroceria());
             pre.setInt(6, modelos.getPortas());
-            pre.setString(7, modelos.getCor());
-            pre.setInt(8, modelos.getIdMarcas());
+            pre.setInt(7, modelos.getIdMarcas());
 
 
             pre.execute();
@@ -90,7 +88,7 @@ public class ServiceModelo {
     public static boolean atualizarModelos(int index, Modelos modelos){
         try {
             Connection conn = conexao.getConexao();
-            String updateSql = "update public.modelos set nome = ?, cambio = ?, combustivel = ?, potencia = ?, carroceria = ?, portas = ?, cor = ?, id_marcas = ? where id = ?";
+            String updateSql = "update public.modelos set nome = ?, cambio = ?, combustivel = ?, potencia = ?, carroceria = ?, portas = ?, id_marcas = ? where id = ?";
             PreparedStatement ps = conn.prepareStatement(updateSql);
             ps.setString(1, modelos.getNome());
 
@@ -110,9 +108,8 @@ public class ServiceModelo {
 
             ps.setString(5, modelos.getCarroceria());
             ps.setInt(6, modelos.getPortas());
-            ps.setString(7, modelos.getCor());
-            ps.setInt(8, modelos.getIdMarcas());
-            ps.setInt(9, index);
+            ps.setInt(7, modelos.getIdMarcas());
+            ps.setInt(8, index);
 
             return ps.execute();
         } catch (Exception e){

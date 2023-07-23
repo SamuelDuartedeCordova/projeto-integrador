@@ -20,7 +20,6 @@ public class Modelos {
     private String cambio;
     private String combustivel;
     private String carroceria;
-    private String cor;
     private Integer potencia;
     private Integer idMarcas;
     private Integer portas;
@@ -34,13 +33,12 @@ public class Modelos {
         this.nomeMarca = nomeMarca;
     }
 
-    public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas, Integer portas) {
+    public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, Integer potencia, Integer idMarcas, Integer portas) {
         this.id = id;
         this.nome = nome;
         this.cambio = cambio;
         this.combustivel = combustivel;
         this.carroceria = carroceria;
-        this.cor = cor;
         this.potencia = potencia;
         this.idMarcas = idMarcas;
         this.portas = portas;
@@ -48,13 +46,12 @@ public class Modelos {
 
 
 
-    public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, String cor, Integer potencia, Integer idMarcas) {
+    public Modelos(Integer id, String nome, String cambio, String combustivel, String carroceria, Integer potencia, Integer idMarcas) {
         this.id = id;
         this.nome = nome;
         this.cambio = cambio;
         this.combustivel = combustivel;
         this.carroceria = carroceria;
-        this.cor = cor;
         this.potencia = potencia;
         this.portas = portas;
     }
@@ -98,14 +95,6 @@ public class Modelos {
 
     public void setCarroceria(String carroceria) {
         this.carroceria = carroceria;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
     }
 
     public Integer getPotencia() {

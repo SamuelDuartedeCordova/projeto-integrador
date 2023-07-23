@@ -12,6 +12,19 @@ public class Veiculo {
     private String placa;
     private String chassi;
     private String nomeModelo;
+    private String cor;
+
+    public String getCor() {
+        return cor;
+    }
+
+    public Veiculo(String cor) {
+        this.cor = cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
 
     public String getNomeModelo() {
         return nomeModelo;
