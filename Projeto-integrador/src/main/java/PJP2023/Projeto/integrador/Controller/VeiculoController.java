@@ -191,7 +191,8 @@ public class VeiculoController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     VeiculoService.salvarVeiculo(vei);
-
+                    this.limparCampos();
+                    this.carregarLista();
                 }
             });
         }

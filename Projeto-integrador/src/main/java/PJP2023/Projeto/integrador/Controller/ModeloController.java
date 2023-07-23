@@ -125,6 +125,8 @@ public class ModeloController {
                 alert.showAndWait();
                 nomeMdl.setStyle("-fx-background-color: pink;");
                 c ++;
+            }else{
+                mod.setPotencia(0);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -178,6 +180,9 @@ public class ModeloController {
                 if (resposta == ButtonType.OK) {
                     //Adicionar novo item a Lista
                     ModeloService.inserirModelos(mod);
+                    this.carregarLista();
+                    this.limparCampos();
+
 
                 }
             });

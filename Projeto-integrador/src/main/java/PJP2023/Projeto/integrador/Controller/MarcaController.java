@@ -58,7 +58,8 @@ public class MarcaController {
                     if (resposta == ButtonType.OK) {
                         //Adicionar novo item a Lista
                         MarcaService.inserirMarcas(mar);
-
+                        limparCampos();
+                        carregarLista();
                     }
                 });
             }else {
@@ -87,10 +88,10 @@ public class MarcaController {
     @FXML
     void excluirMarca(ActionEvent event) {
 
-        Alert alertaExcluir = new Alert(Alert.AlertType.WARNING);
-        alertaExcluir.setTitle("ATENÇÃO!");
-        alertaExcluir.setHeaderText("Ao excluir uma marca, todos os modelos dela serão excluidos também ! Deseja realmente fazer a exclusão?");
-        alertaExcluir.showAndWait().ifPresent(resposta -> {
+        Alert alertaSalvar = new Alert(Alert.AlertType.CONFIRMATION);
+        alertaSalvar.setTitle("Confirmaçao de Exclusão");
+        alertaSalvar.setHeaderText("Todos os veiculos desta marca tambem serão apagados, \n Deseja continuar ?");
+        alertaSalvar.showAndWait().ifPresent(resposta -> {
             if (resposta == ButtonType.OK) {
                 try {
                     MarcaService.deletarMarcas(index);
@@ -101,7 +102,7 @@ public class MarcaController {
                 }catch (Exception e){
                     System.out.println("erro no excluir");
                 } finally {
-                    System.out.println("Try catch finalizado");
+
                 }
             }
 
